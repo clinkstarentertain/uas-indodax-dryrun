@@ -5,8 +5,8 @@ import path from 'node:path';
 import { ROOT } from './env.mjs';
 import { blobStore } from '../lib/store.js';
 const store = await blobStore();
-const out = path.join(ROOT, 'logs_forward'); fs.mkdirSync(path.join(out, 'logs'), { recursive: true });
-const names = await store.list('logs/');
+const out = path.join(ROOT, 'logs_forward'); for (const d of ['logs', 'calls']) fs.mkdirSync(path.join(out, d), { recursive: true });
+const names = [...await store.list('logs/'), ...await store.list('calls/')];
 let baru = 0;
 for (const n of names) {
   const f = path.join(out, n); if (fs.existsSync(f)) continue;

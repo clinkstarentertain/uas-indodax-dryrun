@@ -1,5 +1,5 @@
 {
- "dibuat": "2026-11-14T11:17:47.652Z",
+ "dibuat": "2026-11-14T11:20:18.975Z",
  "freeze": "tag git freeze-uas",
  "params": {
   "timeframe": "60",
@@ -5777,12 +5777,21 @@
   "candle_terakhir": 1794650400,
   "candle_diharapkan": 1,
   "candle_diproses": 1,
+  "candle_tepat_waktu": 1,
   "uptime": 1,
+  "telat_median_detik": 572,
+  "telat_maks_detik": 572,
   "error_api": 0,
   "gagal_fatal": 0,
   "kill_switch_perubahan": 4,
   "kill_switch_putaran_aktif": 0,
   "hari_tercatat": 1,
+  "panggilan": {
+   "eksekusi": 1,
+   "duplikat": 0,
+   "konflik": 0,
+   "gagal": 0
+  },
   "kill_switch_putaran_aktif_log": 0,
   "error_api_log": 0,
   "gagal_fatal_log": 0,
@@ -5978,7 +5987,167 @@
    ]
   }
  },
+ "spread_banding": [
+  {
+   "pair": "BTCIDR",
+   "backtest_spread": 8.105550478328798e-7,
+   "backtest_n": 3,
+   "semua_n": 9,
+   "n_lokal": 8,
+   "n_log_bot": 1,
+   "semua_spread_median": 8.105550478328798e-7,
+   "semua_spread_maks": 0.0008902375867041682,
+   "backtest_slip_beli": 0,
+   "semua_slip_beli": 0,
+   "backtest_slip_jual": 0,
+   "semua_slip_jual": 0
+  },
+  {
+   "pair": "ETHIDR",
+   "backtest_spread": 0.00037230615021121216,
+   "backtest_n": 3,
+   "semua_n": 9,
+   "n_lokal": 8,
+   "n_log_bot": 1,
+   "semua_spread_median": 0.000714847380084352,
+   "semua_spread_maks": 0.0020878916584438057,
+   "backtest_slip_beli": 0,
+   "semua_slip_beli": 0,
+   "backtest_slip_jual": 0.00042486219899728894,
+   "semua_slip_jual": 0
+  },
+  {
+   "pair": "XRPIDR",
+   "backtest_spread": 0.00005515567689804473,
+   "backtest_n": 3,
+   "semua_n": 9,
+   "n_lokal": 8,
+   "n_log_bot": 1,
+   "semua_spread_median": 0.0006621420294653203,
+   "semua_spread_maks": 0.0012662060612733629,
+   "backtest_slip_beli": 0,
+   "semua_slip_beli": 0,
+   "backtest_slip_jual": 0.0004284871086039921,
+   "semua_slip_jual": 0.0004284871086039921
+  },
+  {
+   "pair": "DOGEIDR",
+   "backtest_spread": 0.0017376194613379669,
+   "backtest_n": 3,
+   "semua_n": 9,
+   "n_lokal": 8,
+   "n_log_bot": 1,
+   "semua_spread_median": 0.0017316017316017316,
+   "semua_spread_maks": 0.002600780234070221,
+   "backtest_slip_beli": 0,
+   "semua_slip_beli": 0,
+   "backtest_slip_jual": 0,
+   "semua_slip_jual": 0
+  },
+  {
+   "pair": "SOLIDR",
+   "backtest_spread": 0.0002617215002049431,
+   "backtest_n": 3,
+   "semua_n": 9,
+   "n_lokal": 8,
+   "n_log_bot": 1,
+   "semua_spread_median": 0.000988527536755693,
+   "semua_spread_maks": 0.0017477433369531966,
+   "backtest_slip_beli": 0,
+   "semua_slip_beli": 0,
+   "backtest_slip_jual": 0.0001249005290789862,
+   "semua_slip_jual": 0.000019156044307355735
+  },
+  {
+   "pair": "ADAIDR",
+   "backtest_spread": 0.0016686133822793258,
+   "backtest_n": 3,
+   "semua_n": 9,
+   "n_lokal": 8,
+   "n_log_bot": 1,
+   "semua_spread_median": 0.0030015007503751876,
+   "semua_spread_maks": 0.004668222740913638,
+   "backtest_slip_beli": 0,
+   "semua_slip_beli": 0,
+   "backtest_slip_jual": 0.0004507850033397265,
+   "semua_slip_jual": 0.00033322009347658277
+  }
+ ],
  "gap": {
+  "sinyal_rows": [
+   {
+    "candle": 1794650400,
+    "pair": "BTCIDR",
+    "regime_fwd": 0,
+    "regime_bt": 0,
+    "entry_fwd": 0,
+    "entry_bt": 0,
+    "exit_fwd": 1,
+    "exit_bt": 1,
+    "close_fwd": 1237978000,
+    "close_bt": 1237978000
+   },
+   {
+    "candle": 1794650400,
+    "pair": "ETHIDR",
+    "regime_fwd": 0,
+    "regime_bt": 0,
+    "entry_fwd": 0,
+    "entry_bt": 0,
+    "exit_fwd": 1,
+    "exit_bt": 1,
+    "close_fwd": 34943000,
+    "close_bt": 34943000
+   },
+   {
+    "candle": 1794650400,
+    "pair": "XRPIDR",
+    "regime_fwd": 0,
+    "regime_bt": 0,
+    "entry_fwd": 0,
+    "entry_bt": 0,
+    "exit_fwd": 1,
+    "exit_bt": 1,
+    "close_fwd": 18156,
+    "close_bt": 18156
+   },
+   {
+    "candle": 1794650400,
+    "pair": "DOGEIDR",
+    "regime_fwd": 0,
+    "regime_bt": 0,
+    "entry_fwd": 0,
+    "entry_bt": 0,
+    "exit_fwd": 1,
+    "exit_bt": 1,
+    "close_fwd": 1152,
+    "close_bt": 1152
+   },
+   {
+    "candle": 1794650400,
+    "pair": "SOLIDR",
+    "regime_fwd": 0,
+    "regime_bt": 0,
+    "entry_fwd": 0,
+    "entry_bt": 0,
+    "exit_fwd": 1,
+    "exit_bt": 1,
+    "close_fwd": 1389022,
+    "close_bt": 1389022
+   },
+   {
+    "candle": 1794650400,
+    "pair": "ADAIDR",
+    "regime_fwd": 0,
+    "regime_bt": 0,
+    "entry_fwd": 0,
+    "entry_bt": 0,
+    "exit_fwd": 1,
+    "exit_bt": 1,
+    "close_fwd": 2988,
+    "close_bt": 2988
+   }
+  ],
   "jendela": {
    "candle_awal": 1794650400,
    "candle_akhir": 1794650400,
@@ -6010,8 +6179,8 @@
   "gap_return": 0
  },
  "pemeriksaan": {
-  "total": 24,
-  "cocok": 24,
+  "total": 25,
+  "cocok": 25,
   "rincian": [
    {
     "nama": "backtest.return_total",
@@ -6141,6 +6310,12 @@
    },
    {
     "nama": "forward.candle_diproses (log mentah vs state /api/data)",
+    "hitung_ulang": 1,
+    "sumber": 1,
+    "cocok": true
+   },
+   {
+    "nama": "forward.candle_tepat_waktu (log mentah vs state /api/data)",
     "hitung_ulang": 1,
     "sumber": 1,
     "cocok": true

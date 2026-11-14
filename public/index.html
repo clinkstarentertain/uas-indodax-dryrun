@@ -65,6 +65,7 @@ nav a{color:var(--acc);text-decoration:none;margin-right:12px;font-size:13px}but
 <section id="sinyal"><h2>Keputusan candle terakhir</h2><div class="sub" id="decHead"></div><div class="tbl" id="dec" style="margin-top:8px"></div></section>
 
 <section id="biaya"><h2>Biaya &amp; aturan</h2><div class="two"><div class="tbl" id="fee"></div><div class="tbl" id="cost"></div></div>
+  <h3>Spread &amp; slippage: angka backtest vs seluruh snapshot (lokal + order book di tiap log bot)</h3><div class="tbl" id="spr"></div>
   <div class="tbl" id="params" style="margin-top:12px"></div>
   <p class="sub">Semua angka di halaman ini dibaca dari <span class="mono">/api/data</span> (state bot di Vercel Blob, dihitung saat diminta) dan <span class="mono">/data/laporan.json</span> (hasil <span class="mono">tools/hitung_ulang.mjs</span> dari log mentah). Tidak ada angka yang diketik tangan. Freeze: tag git <span class="mono">freeze-uas</span>.</p>
 </section>
@@ -116,8 +117,8 @@ function render(){
     $('trd').innerHTML=table([['Pasangan',r=>r.pair],['Masuk',r=>wib(r.masuk)],['Keluar',r=>wib(r.keluar)],['Laba bersih',r=>`<span class="${cls(r.laba_bersih)}">${rp(r.laba_bersih)}</span>`],['Return',r=>pct(r.return_pct/100,2)],['Biaya',r=>rp(r.fee_masuk+r.fee_keluar+r.spread_rp+r.slip_rp)],['Alasan',r=>esc(r.alasan)]],(F.trades||[]).slice().reverse(),'belum ada trade tertutup');
     // ops
     const O=F.ops||{};const ks=F.kill_switch||{};
-    $('opsKpi').innerHTML=[kpi('Uptime',pct(F.uptime),`${F.candle_diproses}/${F.candle_diharapkan} candle per jam`,F.uptime>=0.95?'pos':'neg'),kpi('Error API',F.error_api!=null?F.error_api:(O.error_api||0),'percobaan request gagal (sudah di-retry)'),kpi('Gagal fatal',F.gagal_fatal!=null?F.gagal_fatal:(O.gagal_fatal||0),'putaran tanpa eksekusi'),
-      kpi('Kill switch',ks.on?`AKTIF (${esc(ks.mode)})`:'mati',`${F.kill_switch_perubahan||0} perubahan · ${F.kill_switch_putaran_aktif||0} putaran aktif`,ks.on?'neg':'pos'),kpi('Konflik/duplikat ditolak',O.konflik||0,'idempoten per candle')].join('');
+    $('opsKpi').innerHTML=[kpi('Uptime',pct(F.uptime),`${F.candle_tepat_waktu}/${F.candle_diharapkan} candle diproses sebelum candle berikutnya tutup`,F.uptime>=0.95?'pos':'neg'),kpi('Keterlambatan panggilan',F.telat_median_detik==null?'–':Math.round(F.telat_median_detik/60)+' mnt',`median sesudah candle tutup · maks ${F.telat_maks_detik==null?'–':Math.round(F.telat_maks_detik/60)+' mnt'}`),kpi('Error API',F.error_api!=null?F.error_api:(O.error_api||0),'percobaan request gagal (sudah di-retry)'),kpi('Gagal fatal',F.gagal_fatal!=null?F.gagal_fatal:(O.gagal_fatal||0),'putaran tanpa eksekusi'),
+      kpi('Kill switch',ks.on?`AKTIF (${esc(ks.mode)})`:'mati',`${F.kill_switch_perubahan||0} perubahan · ${F.kill_switch_putaran_aktif||0} putaran aktif`,ks.on?'neg':'pos'),kpi('Panggilan tanpa eksekusi',L.forward&&L.forward.panggilan?L.forward.panggilan.duplikat+L.forward.panggilan.konflik:'–',L.forward&&L.forward.panggilan?`${L.forward.panggilan.duplikat} duplikat · ${L.forward.panggilan.konflik} konflik (idempoten per candle, dari log mentah)`:'')].join('');
     $('kill').innerHTML=table([['Waktu',r=>wib(r.t)],['Status',r=>r.on?'AKTIF':'mati'],['Mode',r=>esc(r.mode)],['Alasan',r=>esc(r.alasan)]],(F.kill_log||[]).slice().reverse(),'kill switch belum pernah dipakai');
     const dk=F.keputusan_terakhir;const bl=(L.forward&&L.forward.diblokir)||((dk&&dk.diblokir)||[]).map(d=>({candle:dk.candle,...d}));
     $('blok').innerHTML=table([['Candle',r=>wib(r.candle)],['Pasangan',r=>r.pair],['Alasan',r=>esc(r.reason)]],bl.slice(-15).reverse(),'tidak ada order yang diblokir');
@@ -138,6 +139,7 @@ function render(){
   // biaya
   if(L.fee){const s=L.fee.sumber;$('fee').innerHTML=table([['Sumber fee',r=>esc(r.k)],['Taker',r=>pct(r.nilai,4)],['Diakses',r=>esc(r.diakses)]],Object.entries(s).map(([k,v])=>({k:k+' · '+v.url.split(' ')[0],...v})))+`<div class="sub">Dipakai: yang lebih mahal = <b>${pct(L.fee.taker_dipakai,4)}</b> per sisi · minimum order ${rp(L.fee.min_order_idr)}</div>`;
     $('cost').innerHTML=table([['Pasangan',r=>r.p],['Snapshot',r=>r.n_snapshot],['Spread',r=>pct(r.spread,4)],['Slip beli',r=>pct(r.slip_buy,4)],['Slip jual',r=>pct(r.slip_sell,4)]],Object.entries(L.biaya_snapshot).map(([p,v])=>({p,...v})));
+    if(L.spread_banding)$('spr').innerHTML=table([['Pasangan',r=>r.pair],['Spread backtest',r=>pct(r.backtest_spread,4)+` (n=${r.backtest_n})`],['Spread median semua',r=>pct(r.semua_spread_median,4)+` (n=${r.semua_n})`],['Spread maks',r=>pct(r.semua_spread_maks,3)],['Slip beli bt / semua',r=>pct(r.backtest_slip_beli,4)+' / '+pct(r.semua_slip_beli,4)],['Slip jual bt / semua',r=>pct(r.backtest_slip_jual,4)+' / '+pct(r.semua_slip_jual,4)]],L.spread_banding);
     const P=L.params;$('params').innerHTML=table([['Parameter',r=>r[0]],['Nilai',r=>esc(r[1])]],[['Masuk','close > EMA'+P.emaSlow+' jam & close > tertinggi '+P.donchianIn+' jam & BTC > EMA'+P.btcRegimeEma],['Keluar','close < terendah '+P.donchianOut+' jam atau saklar BTC OFF'],['Posisi maks / ukuran',P.maxPositions+' posisi / '+pct(P.maxPositionFrac,0)+' ekuitas'],['Daily loss limit',pct(P.dailyLossLimit,0)+' dari ekuitas 00.00 WIB'],['Validasi','candle tertutup, ≤ 2× timeframe, tanpa candle hilang, harga/volume > 0, book tidak kosong, spread ≤ 2%']]);}
 }
 async function load(){

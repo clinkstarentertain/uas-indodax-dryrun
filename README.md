@@ -7,7 +7,19 @@ Backtest dan bot memakai **fungsi sinyal yang sama**, yaitu [lib/strategy.js](li
 - Operasional, scheduler, dan kill switch: [docs/OPERASIONAL.md](docs/OPERASIONAL.md)
 - Refleksi dan hasil forward test: [docs/REFLEKSI.md](docs/REFLEKSI.md)
 
+## Link
+
+- Dashboard Vercel: https://uas-indodax-dryrun.vercel.app
+- Data mentah dashboard: https://uas-indodax-dryrun.vercel.app/api/data
+- Dashboard offline: `laporan/dashboard_offline.html` (bisa dibuka tanpa internet)
+
 ## Freeze
+
+- **Hash commit freeze:** `7f112cd0b2e315061182788e1896ce5c43b11895`
+- **Waktu commit freeze:** Sabtu, 14 Nov 2026, 18:06:31 WIB
+- **Forward test** dimulai pada candle pertama sesudah freeze. Tick produksi pertama berjalan 14 Nov 2026 pukul 18.09 WIB untuk candle 17.00 WIB.
+
+**Penyimpangan dari jadwal soal (dilaporkan jujur).** Soal meminta freeze pada 4 Nov 12.00 WIB dan forward test 10 hari sampai 14 Nov. Pekerjaan ini baru dimulai 14 Nov, sehingga freeze dan forward test juga baru dimulai pada tanggal itu. Akibatnya, saat pengumpulan (14 Nov 23.59 WIB) forward test baru berjalan sekitar 6 jam. Bot tetap berjalan 10 hari penuh sesudahnya, sampai 24 Nov 2026. Selama itu angka dashboard Vercel terus diperbarui secara langsung dari state bot. Tidak ada angka forward yang dibuat-buat untuk mengisi periode yang tidak dijalankan.
 
 Freeze strategi adalah commit bertag **`freeze-uas`** (`git show freeze-uas`). Commit itu berisi:
 
@@ -57,6 +69,12 @@ python tools/download_candles.py 60 2023-08-01 BTCIDR ETHIDR XRPIDR DOGEIDR SOLI
 node tools/tarik_log.mjs
 node tools/hitung_ulang.mjs         # -> laporan/angka.json + laporan/dashboard_offline.html
 ```
+
+## Deploy & operasional
+
+Lihat [docs/OPERASIONAL.md](docs/OPERASIONAL.md). Isinya mencakup deploy, Blob, `CRON_SECRET`, scheduler, kill switch, dan cara menarik log.
+
+Perubahan sesudah freeze, yang semuanya berupa perbaikan bug dan pencatatan tanpa mengubah aturan, ada di [docs/PERUBAHAN_PASCA_FREEZE.md](docs/PERUBAHAN_PASCA_FREEZE.md).
 
 ## Keamanan
 

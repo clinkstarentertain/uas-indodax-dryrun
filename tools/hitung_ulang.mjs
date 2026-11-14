@@ -10,7 +10,7 @@ import path from 'node:path';
 import { ROOT } from './env.mjs';
 import { loadCandles, runBacktest, metrics as btMetrics } from '../backtest/run.mjs';
 import { tradeStats, maxDrawdown, forwardMetrics } from '../lib/metrics.js';
-import { fillBuy, fillSell, FEE_TAKER, FEE_SOURCES, MIN_ORDER_IDR } from '../lib/execution.js';
+import { fillBuy, fillSell, measure, FEE_TAKER, FEE_SOURCES, MIN_ORDER_IDR } from '../lib/execution.js';
 import { PARAMS, UNIVERSE } from '../lib/strategy.js';
 import { wibDay } from '../lib/core.js';
 
@@ -73,17 +73,25 @@ const fillCek = orders.map((o) => {
   const f = o.sisi === 'BELI' ? fillBuy(book, o.nilai) : fillSell(book, o.qty);
   return { candle: o.candle, pair: o.pair, sisi: o.sisi, cocok: !!f && close(f.avg, o.harga_fill, 1e-7) && close(o.fee, o.nilai * FEE_TAKER, 1e-9), sisi_benar: o.sisi === 'BELI' ? o.harga_fill >= o.best_ask : o.harga_fill <= o.best_bid };
 });
+// candle tertutup terakhir saat laporan dibuat (dari unduhan candle forward terbaru) -> penyebut uptime
+const fdirC = path.join(ROOT, 'data/raw/candles_forward');
+const fwdFiles = fs.existsSync(fdirC) ? fs.readdirSync(fdirC).filter((f) => f.startsWith('BTCIDR_')).sort() : [];
+const nowCandle = fwdFiles.length ? JSON.parse(fs.readFileSync(path.join(fdirC, fwdFiles.at(-1)), 'utf8')).at(-1).Time : null;
+const cdir = path.join(ROOT, 'logs_forward/calls');
+const calls = fs.existsSync(cdir) ? fs.readdirSync(cdir).sort().map((f) => JSON.parse(fs.readFileSync(path.join(cdir, f), 'utf8'))) : [];
+const gagalLogs = fs.existsSync(ldir) ? fs.readdirSync(ldir).filter((f) => f.startsWith('gagal-')).map((f) => JSON.parse(fs.readFileSync(path.join(ldir, f), 'utf8'))) : [];
 const history = logs.map((l) => ({ t: l.waktu_panggilan, candle: l.candle, ekuitas: l.ekuitas.sesudah, bh_btc: l.ekuitas.bh_btc }));
 const harian = []; for (const l of logs) { const h = wibDay(l.waktu_panggilan); if (!harian.find((x) => x.hari === h)) harian.push({ hari: h, ekuitas: l.ekuitas.sebelum, t: l.waktu_panggilan }); }
-const B = forwardMetrics({ history, trades, orders, modal, ops: state && state.ops, killLog: state && state.killLog, daily: harian });
+const B = forwardMetrics({ history, trades, orders, modal, ops: state && state.ops, killLog: state && state.killLog, daily: harian, nowCandle });
+B.panggilan = { eksekusi: logs.length, duplikat: calls.filter((c) => c.status === 'duplikat').length, konflik: calls.filter((c) => c.status === 'konflik').length, gagal: gagalLogs.length };
 B.kill_switch_putaran_aktif_log = logs.filter((l) => l.kill_switch && l.kill_switch.on).length;
 B.error_api_log = logs.reduce((s, l) => s + (l.error_api || []).length, 0);
 B.gagal_fatal_log = gagal;
 B.verifikasi_fill = { total: fillCek.length, cocok: fillCek.filter((x) => x.cocok && x.sisi_benar).length };
 B.diblokir = logs.flatMap((l) => (l.diblokir || []).map((d) => ({ candle: l.candle, ...d })));
 if (state) {
-  const S = forwardMetrics({ history: state.history, trades: state.trades, orders: state.orders, modal: state.modal_awal, ops: state.ops, killLog: state.killLog, daily: state.daily });
-  for (const k of ['ekuitas_akhir', 'return_total', 'mdd', 'jumlah_trade', 'win_rate', 'profit_factor', 'porsi_biaya', 'bh_btc_return', 'bh_btc_mdd', 'candle_diproses', 'uptime'])
+  const S = forwardMetrics({ history: state.history, trades: state.trades, orders: state.orders, modal: state.modal_awal, ops: state.ops, killLog: state.killLog, daily: state.daily, nowCandle });
+  for (const k of ['ekuitas_akhir', 'return_total', 'mdd', 'jumlah_trade', 'win_rate', 'profit_factor', 'porsi_biaya', 'bh_btc_return', 'bh_btc_mdd', 'candle_diproses', 'candle_tepat_waktu', 'uptime'])
     banding(`forward.${k} (log mentah vs state /api/data)`, B[k], S[k], 1e-9);
   banding('forward.error_api (log vs state)', B.error_api_log, state.ops.error_api, 0);
 }
@@ -117,7 +125,7 @@ if (logs.length) {
   const cocok = ada.filter((r) => r.entry_fwd === r.entry_bt && r.exit_fwd === r.exit_bt && r.regime_fwd === r.regime_bt);
   const eqW = bt.equity.filter((e) => e.t >= logs[0].waktu_panggilan - 3600 && e.t <= logs.at(-1).waktu_panggilan + 3600);
   const btOrdersW = bt.orders.filter((o) => o.t >= T0 + 3600 && o.t <= T1 + 3600 + 3600);
-  C = { jendela: { candle_awal: T0, candle_akhir: T1, awal_iso: new Date(T0 * 1000).toISOString(), akhir_iso: new Date(T1 * 1000).toISOString(), jam: Math.round((T1 - T0) / 3600) + 1 },
+  C = { sinyal_rows: rows, jendela: { candle_awal: T0, candle_akhir: T1, awal_iso: new Date(T0 * 1000).toISOString(), akhir_iso: new Date(T1 * 1000).toISOString(), jam: Math.round((T1 - T0) / 3600) + 1 },
     sinyal: { baris: rows.length, tersedia_di_backtest: ada.length, cocok: cocok.length, tidak_cocok: ada.filter((r) => !cocok.includes(r)) },
     candle_konsisten: { tumpang_tindih: tumpang, close_beda: beda },
     backtest_jendela: { return_total: eqW.length ? eqW.at(-1).ekuitas / eqW[0].ekuitas - 1 : null, mdd: eqW.length ? maxDrawdown(eqW.map((e) => e.ekuitas), eqW[0].ekuitas) : null, jumlah_order: btOrdersW.length,
@@ -127,6 +135,19 @@ if (logs.length) {
   C.gap_return = C.forward_jendela.return_total - (C.backtest_jendela.return_total || 0);
 }
 
+// ---------- C2. SPREAD: angka backtest (median snapshot s.d. freeze) vs SEMUA snapshot (lokal + order book di setiap log bot) ----------
+const med = (a) => { const s = a.filter((x) => x != null).sort((x, y) => x - y); return s.length ? (s.length % 2 ? s[(s.length - 1) / 2] : (s[s.length / 2 - 1] + s[s.length / 2]) / 2) : null; };
+const ORDER_IDR = JSON.parse(rd('data/costs.json')).order_idr;
+const spreadBanding = UNIVERSE.map((p) => {
+  const sd = path.join(ROOT, 'data/raw/snapshots', p.toLowerCase());
+  const ms = (fs.existsSync(sd) ? fs.readdirSync(sd) : []).map((f) => { try { return measure(JSON.parse(fs.readFileSync(path.join(sd, f), 'utf8')), ORDER_IDR); } catch { return null; } }).filter(Boolean);
+  const mb = logs.map((l) => (l.order_book && l.order_book[p] ? measure({ buy: l.order_book[p].bids, sell: l.order_book[p].asks }, ORDER_IDR) : null)).filter(Boolean);
+  const all = [...ms, ...mb];
+  return { pair: p, backtest_spread: costs[p].spread, backtest_n: costs[p].n_snapshot, semua_n: all.length, n_lokal: ms.length, n_log_bot: mb.length,
+    semua_spread_median: med(all.map((m) => m.spreadPct)), semua_spread_maks: all.length ? Math.max(...all.map((m) => m.spreadPct)) : null,
+    backtest_slip_beli: costs[p].slip_buy, semua_slip_beli: med(all.map((m) => m.slipBuy)), backtest_slip_jual: costs[p].slip_sell, semua_slip_jual: med(all.map((m) => m.slipSell)) };
+});
+
 // ---------- D. KELUARAN ----------
 const lastLog = logs.at(-1) || null;
 const out = { dibuat: new Date().toISOString(), freeze: 'tag git freeze-uas', params: PARAMS, fee: { taker_dipakai: FEE_TAKER, sumber: FEE_SOURCES, min_order_idr: MIN_ORDER_IDR },
@@ -134,12 +155,29 @@ const out = { dibuat: new Date().toISOString(), freeze: 'tag git freeze-uas', pa
   stress_biaya_x2: JSON.parse(rd('artifacts/stress_biaya_x2.json')),
   forward: { ...B, history, harian, trades, orders, posisi: state ? state.positions : open, kill_log: state ? state.killLog : [], kill_switch: state ? state.killSwitch : null,
     keputusan_terakhir: lastLog && { candle: lastLog.candle, waktu: lastLog.waktu_panggilan, ...lastLog.keputusan, validasi: lastLog.validasi } },
-  gap: C, pemeriksaan: { total: cek.length, cocok: cek.filter((c) => c.cocok).length, rincian: cek } };
+  spread_banding: spreadBanding, gap: C, pemeriksaan: { total: cek.length, cocok: cek.filter((c) => c.cocok).length, rincian: cek } };
 fs.mkdirSync(path.join(ROOT, 'laporan'), { recursive: true }); fs.mkdirSync(path.join(ROOT, 'public/data'), { recursive: true });
 fs.writeFileSync(path.join(ROOT, 'laporan/angka.json'), JSON.stringify(out, null, 1));
 fs.writeFileSync(path.join(ROOT, 'public/data/laporan.json'), JSON.stringify(out));
 const html = rd('public/index.html').replace('<script id="data-offline"></script>', `<script id="data-offline">window.__LAPORAN__=${JSON.stringify(out).replace(/</g, '\\u003c')};window.__OFFLINE__=true;</script>`);
 fs.writeFileSync(path.join(ROOT, 'laporan/dashboard_offline.html'), html);
+// CSV log mentah (turunan langsung dari JSON log, untuk dibaca di spreadsheet)
+const toCsv = (rows) => { if (!rows.length) return ''; const k = [...new Set(rows.flatMap((r) => Object.keys(r)))]; return [k.join(','), ...rows.map((r) => k.map((x) => { const v = r[x]; const s = v == null ? '' : typeof v === 'object' ? JSON.stringify(v) : String(v); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; }).join(','))].join('\n') + '\n'; };
+const cd = path.join(ROOT, 'laporan/csv'); fs.mkdirSync(cd, { recursive: true });
+const iso = (t) => new Date((t + 7 * 3600) * 1000).toISOString().slice(0, 19).replace('T', ' ') + ' WIB';
+fs.writeFileSync(path.join(cd, 'panggilan.csv'), toCsv([
+  ...logs.map((l) => ({ waktu: l.waktu_panggilan, waktu_wib: iso(l.waktu_panggilan), status: 'ok', candle: l.candle, telat_detik: l.waktu_panggilan - l.candle - 3600, n_order: l.order.length, n_diblokir: l.diblokir.length, n_error_api: l.error_api.length, kill_switch: l.kill_switch && l.kill_switch.on ? 1 : 0, regime_on: l.keputusan.regime_on ? 1 : 0, ekuitas: l.ekuitas.sesudah })),
+  ...calls.map((c) => ({ waktu: c.waktu_panggilan, waktu_wib: iso(c.waktu_panggilan), status: c.status, candle: c.candle, n_error_api: (c.error_api || []).length })),
+  ...gagalLogs.map((c) => ({ waktu: c.waktu_panggilan, waktu_wib: iso(c.waktu_panggilan), status: 'gagal', error: c.error, n_error_api: (c.error_api || []).length })),
+].sort((a, b) => a.waktu - b.waktu)));
+fs.writeFileSync(path.join(cd, 'order.csv'), toCsv(orders.map((o) => ({ waktu_wib: iso(o.t), ...o }))));
+fs.writeFileSync(path.join(cd, 'trade.csv'), toCsv(trades));
+fs.writeFileSync(path.join(cd, 'equity_per_jam.csv'), toCsv(history.map((h) => ({ waktu_wib: iso(h.t), ...h }))));
+fs.writeFileSync(path.join(cd, 'equity_harian.csv'), toCsv(harian.map((h) => ({ ...h, waktu_wib: iso(h.t) }))));
+fs.writeFileSync(path.join(cd, 'error_api.csv'), toCsv([...logs, ...calls, ...gagalLogs].flatMap((l) => (l.error_api || []).map((e) => ({ waktu_wib: iso(e.t), ...e })))));
+fs.writeFileSync(path.join(cd, 'diblokir.csv'), toCsv(B.diblokir.map((d) => ({ candle_wib: iso(d.candle), ...d }))));
+fs.writeFileSync(path.join(cd, 'sinyal_backtest_vs_forward.csv'), toCsv(C ? C.sinyal_rows : []));
+fs.writeFileSync(path.join(cd, 'spread_banding.csv'), toCsv(spreadBanding));
 console.log(`pemeriksaan: ${out.pemeriksaan.cocok}/${out.pemeriksaan.total} cocok`);
 for (const c of cek.filter((c) => !c.cocok)) console.log('TIDAK COCOK', c);
 console.log('forward: log', logs.length, 'order', orders.length, 'fill terverifikasi', B.verifikasi_fill, C ? `sinyal cocok ${C.sinyal.cocok}/${C.sinyal.tersedia_di_backtest}` : '');
