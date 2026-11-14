@@ -17,7 +17,7 @@
  "mulai": 1794654572,
  "cash": 100000000,
  "positions": {},
- "lastCandle": 1794650400,
+ "lastCandle": 1794654000,
  "day": "2026-11-14",
  "dayStartEquity": 100000000,
  "killSwitch": {
@@ -67,6 +67,17 @@
    "bh_btc": 99676170.83301364,
    "n_order": 0,
    "n_error_api": 0
+  },
+  {
+   "t": 1794657654,
+   "candle": 1794654000,
+   "ekuitas": 100000000,
+   "kas": 100000000,
+   "n_posisi": 0,
+   "btc_bid": 1234902000,
+   "bh_btc": 99659062.00887546,
+   "n_order": 0,
+   "n_error_api": 0
   }
  ],
  "daily": [
@@ -79,7 +90,7 @@
  "trades": [],
  "orders": [],
  "ops": {
-  "panggilan_diproses": 1,
+  "panggilan_diproses": 2,
   "gagal_fatal": 0,
   "error_api": 0,
   "konflik": 0,

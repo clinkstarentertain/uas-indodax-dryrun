@@ -1,0 +1,11 @@
+{
+ "versi": "v2-donchian-168-72",
+ "waktu_panggilan": 1794658365,
+ "waktu_panggilan_iso": "2026-11-14T12:12:45.000Z",
+ "waktu_server": 1794658365,
+ "candle": 1794654000,
+ "candle_iso": "2026-11-14T11:00:00.000Z",
+ "status": "duplikat",
+ "lastCandle": 1794654000,
+ "error_api": []
+}

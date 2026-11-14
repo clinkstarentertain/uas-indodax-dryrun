@@ -178,6 +178,38 @@ fs.writeFileSync(path.join(cd, 'error_api.csv'), toCsv([...logs, ...calls, ...ga
 fs.writeFileSync(path.join(cd, 'diblokir.csv'), toCsv(B.diblokir.map((d) => ({ candle_wib: iso(d.candle), ...d }))));
 fs.writeFileSync(path.join(cd, 'sinyal_backtest_vs_forward.csv'), toCsv(C ? C.sinyal_rows : []));
 fs.writeFileSync(path.join(cd, 'spread_banding.csv'), toCsv(spreadBanding));
+// ringkasan angka untuk refleksi (dibuat otomatis; docs/REFLEKSI.md merujuk file ini)
+{
+  const P = (v, d = 2) => (v == null || !isFinite(v) ? '–' : (v * 100).toFixed(d).replace('.', ',') + '%');
+  const R = (v) => (v == null ? '–' : 'Rp' + Math.round(v).toLocaleString('id-ID'));
+  const f = out.forward, a = out.backtest, g = out.gap;
+  const L = [];
+  L.push('# Ringkasan angka (dibuat otomatis oleh tools/hitung_ulang.mjs)', '', `Dibuat: ${out.dibuat} (UTC). Pemeriksaan silang: **${out.pemeriksaan.cocok}/${out.pemeriksaan.total} cocok**.`, '');
+  L.push('## Forward test', '', '| Metrik | Nilai |', '|---|---|',
+    `| Jendela | ${g ? `${iso(g.jendela.candle_awal)} → ${iso(g.jendela.candle_akhir)} (${g.jendela.jam} candle)` : '–'} |`,
+    `| Ekuitas akhir | ${R(f.ekuitas_akhir)} |`, `| Return total | ${P(f.return_total)} |`, `| MDD | ${P(f.mdd)} |`,
+    `| Trade / order | ${f.jumlah_trade} / ${f.jumlah_order} |`, `| PF / win rate | ${f.profit_factor == null ? '–' : f.profit_factor.toFixed(2)} / ${P(f.win_rate, 1)} |`,
+    `| Porsi biaya | ${P(f.porsi_biaya, 1)} |`, `| B&H BTC/IDR (return / MDD) | ${P(f.bh_btc_return)} / ${P(f.bh_btc_mdd)} |`,
+    `| Uptime | ${P(f.uptime, 1)} (${f.candle_tepat_waktu}/${f.candle_diharapkan}) |`, `| Telat panggilan median / maks | ${f.telat_median_detik == null ? '–' : Math.round(f.telat_median_detik / 60) + ' mnt'} / ${f.telat_maks_detik == null ? '–' : Math.round(f.telat_maks_detik / 60) + ' mnt'} |`,
+    `| Panggilan: eksekusi / duplikat / konflik / gagal | ${f.panggilan.eksekusi} / ${f.panggilan.duplikat} / ${f.panggilan.konflik} / ${f.panggilan.gagal} |`,
+    `| Error API (percobaan gagal) | ${f.error_api_log} |`, `| Kill switch: perubahan / putaran aktif | ${f.kill_switch_perubahan} / ${f.kill_switch_putaran_aktif_log} |`,
+    `| Fill terverifikasi ulang dari order book di log | ${f.verifikasi_fill.cocok}/${f.verifikasi_fill.total} |`, '');
+  if (g) L.push('## Gap backtest vs forward (jendela sama)', '', '| | Forward | Backtest |', '|---|---|---|',
+    `| Return | ${P(g.forward_jendela.return_total)} | ${P(g.backtest_jendela.return_total)} |`, `| MDD | ${P(g.forward_jendela.mdd)} | ${P(g.backtest_jendela.mdd)} |`,
+    `| Order | ${g.forward_jendela.jumlah_order} | ${g.backtest_jendela.jumlah_order} |`, '',
+    `Sinyal cocok candle per candle: **${g.sinyal.cocok}/${g.sinyal.tersedia_di_backtest}** (entry, exit, saklar × pasangan × candle). Candle unduhan ulang vs data backtest: ${g.candle_konsisten.close_beda} beda dari ${g.candle_konsisten.tumpang_tindih} bar.`, '');
+  L.push('## Backtest 3 tahun', '', `Return ${P(a.return_total, 1)}, CAGR ${P(a.cagr, 1)}, MDD ${P(a.mdd, 1)}, ${a.jumlah_trade} trade, PF ${a.profit_factor.toFixed(2)}, win rate ${P(a.win_rate, 1)}, porsi biaya ${P(a.porsi_biaya, 1)}. B&H BTC: ${P(a.bh_btc_return, 1)} (MDD ${P(a.bh_btc_mdd, 1)}). OOS 1 tahun konfigurasi terpilih: ${P(out.is_oos.terpilih.oos_return, 1)}.`, '');
+  L.push('## Spread & slippage: backtest vs seluruh snapshot', '', '| Pasangan | Spread backtest (n) | Spread median semua (n) | Spread maks | Slip jual bt / semua |', '|---|---|---|---|---|',
+    ...out.spread_banding.map((s) => `| ${s.pair} | ${P(s.backtest_spread, 4)} (${s.backtest_n}) | ${P(s.semua_spread_median, 4)} (${s.semua_n}) | ${P(s.semua_spread_maks, 3)} | ${P(s.backtest_slip_jual, 4)} / ${P(s.semua_slip_jual, 4)} |`), '');
+  fs.writeFileSync(path.join(ROOT, 'laporan/ringkasan_angka.md'), L.join('\n'));
+  // refleksi: template docs/REFLEKSI.template.md + angka hasil hitung ulang -> docs/REFLEKSI.md
+  const ada = out.spread_banding.find((s) => s.pair === 'ADAIDR');
+  const isi = { JAM: g ? g.jendela.jam : 0, FWD_RET: P(f.return_total), FWD_MDD: P(f.mdd), FWD_ORDER: f.jumlah_order, BH_RET: P(f.bh_btc_return), UPTIME: `${P(f.uptime, 1)} (${f.candle_tepat_waktu}/${f.candle_diharapkan})`,
+    TELAT: f.telat_median_detik == null ? '–' : Math.round(f.telat_median_detik / 60) + ' menit', ERR: f.error_api_log, SINYAL: g ? `${g.sinyal.cocok}/${g.sinyal.tersedia_di_backtest}` : '–',
+    TUMPANG: g ? g.candle_konsisten.tumpang_tindih.toLocaleString('id-ID') : '–', BEDA: g ? g.candle_konsisten.close_beda : '–', GAP: g ? P(g.gap_return) : '–', ADA_BT: P(ada.backtest_spread, 3), ADA_ALL: P(ada.semua_spread_median, 3) };
+  const tpl = rd('docs/REFLEKSI.template.md');
+  fs.writeFileSync(path.join(ROOT, 'docs/REFLEKSI.md'), `<!-- dibuat otomatis oleh tools/hitung_ulang.mjs dari docs/REFLEKSI.template.md pada ${out.dibuat} -->\n` + tpl.replace(/\{\{(\w+)\}\}/g, (m, k) => (k in isi ? String(isi[k]) : m)));
+}
 console.log(`pemeriksaan: ${out.pemeriksaan.cocok}/${out.pemeriksaan.total} cocok`);
 for (const c of cek.filter((c) => !c.cocok)) console.log('TIDAK COCOK', c);
 console.log('forward: log', logs.length, 'order', orders.length, 'fill terverifikasi', B.verifikasi_fill, C ? `sinyal cocok ${C.sinyal.cocok}/${C.sinyal.tersedia_di_backtest}` : '');

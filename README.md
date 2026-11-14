@@ -5,7 +5,8 @@ Backtest dan bot memakai **fungsi sinyal yang sama**, yaitu [lib/strategy.js](li
 
 - Strategi, perubahan dari UTS, universe, sumber biaya, dan hasil backtest: **[docs/STRATEGI.md](docs/STRATEGI.md)**
 - Operasional, scheduler, dan kill switch: [docs/OPERASIONAL.md](docs/OPERASIONAL.md)
-- Refleksi dan hasil forward test: [docs/REFLEKSI.md](docs/REFLEKSI.md)
+- Refleksi dan hasil forward test: [docs/REFLEKSI.md](docs/REFLEKSI.md). File ini dibuat oleh `hitung_ulang` dari `docs/REFLEKSI.template.md`, sehingga angkanya selalu sama dengan log.
+- Ringkasan angka otomatis: [laporan/ringkasan_angka.md](laporan/ringkasan_angka.md)
 
 ## Link
 

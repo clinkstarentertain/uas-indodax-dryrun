@@ -1,5 +1,5 @@
 {
- "dibuat": "2026-11-14T11:20:18.975Z",
+ "dibuat": "2026-11-14T12:13:46.271Z",
  "freeze": "tag git freeze-uas",
  "params": {
   "timeframe": "60",
@@ -5771,13 +5771,13 @@
   "porsi_biaya": null,
   "jumlah_order": 0,
   "total_fee_order_rp": 0,
-  "bh_btc_return": -0.0032382916698635578,
-  "bh_btc_mdd": -0.0032382916698635578,
+  "bh_btc_return": -0.003409379911245458,
+  "bh_btc_mdd": -0.003409379911245458,
   "candle_pertama": 1794650400,
-  "candle_terakhir": 1794650400,
-  "candle_diharapkan": 1,
-  "candle_diproses": 1,
-  "candle_tepat_waktu": 1,
+  "candle_terakhir": 1794654000,
+  "candle_diharapkan": 2,
+  "candle_diproses": 2,
+  "candle_tepat_waktu": 2,
   "uptime": 1,
   "telat_median_detik": 572,
   "telat_maks_detik": 572,
@@ -5787,9 +5787,9 @@
   "kill_switch_putaran_aktif": 0,
   "hari_tercatat": 1,
   "panggilan": {
-   "eksekusi": 1,
-   "duplikat": 0,
-   "konflik": 0,
+   "eksekusi": 2,
+   "duplikat": 1,
+   "konflik": 1,
    "gagal": 0
   },
   "kill_switch_putaran_aktif_log": 0,
@@ -5806,6 +5806,12 @@
     "candle": 1794650400,
     "ekuitas": 100000000,
     "bh_btc": 99676170.83301364
+   },
+   {
+    "t": 1794657654,
+    "candle": 1794654000,
+    "ekuitas": 100000000,
+    "bh_btc": 99659062.00887546
    }
   ],
   "harian": [
@@ -5855,21 +5861,21 @@
    "alasan": "uji kedua selesai"
   },
   "keputusan_terakhir": {
-   "candle": 1794650400,
-   "waktu": 1794654572,
+   "candle": 1794654000,
+   "waktu": 1794657654,
    "regime_on": false,
-   "btc_close": 1237978000,
-   "btc_ema720": 1398413850.05754,
+   "btc_close": 1234902000,
+   "btc_ema720": 1397990332.2911992,
    "urutan_beli": [],
    "baris": [
     {
      "pair": "BTCIDR",
      "valid_fitur": true,
-     "close": 1237978000,
+     "close": 1234902000,
      "hh": 1374199000,
      "ll": 1226017000,
-     "ema200": 1328668028.1258748,
-     "roc": -0.098780638726914,
+     "ema200": 1327735033.109079,
+     "roc": -0.1008392347716679,
      "tren": false,
      "entry": false,
      "exit": true,
@@ -5878,11 +5884,11 @@
     {
      "pair": "ETHIDR",
      "valid_fitur": true,
-     "close": 34943000,
+     "close": 35007000,
      "hh": 40617000,
      "ll": 34530000,
-     "ema200": 37840891.37402213,
-     "roc": -0.13818872391851234,
+     "ema200": 37812693.46160462,
+     "roc": -0.13811950661053252,
      "tren": false,
      "entry": false,
      "exit": true,
@@ -5891,11 +5897,11 @@
     {
      "pair": "XRPIDR",
      "valid_fitur": true,
-     "close": 18156,
+     "close": 18249,
      "hh": 21188,
      "ll": 18064,
-     "ema200": 19809.02648607007,
-     "roc": -0.13948528366273283,
+     "ema200": 19793.503832779596,
+     "roc": -0.13871059090050974,
      "tren": false,
      "entry": false,
      "exit": true,
@@ -5904,11 +5910,11 @@
     {
      "pair": "DOGEIDR",
      "valid_fitur": true,
-     "close": 1152,
+     "close": 1158,
      "hh": 1301,
      "ll": 1148,
-     "ema200": 1243.6901949017024,
-     "roc": -0.11248073959938365,
+     "ema200": 1242.8375564840228,
+     "roc": -0.10991544965411226,
      "tren": false,
      "entry": false,
      "exit": true,
@@ -5917,11 +5923,11 @@
     {
      "pair": "SOLIDR",
      "valid_fitur": true,
-     "close": 1389022,
+     "close": 1393845,
      "hh": 1627344,
      "ll": 1381215,
-     "ema200": 1537551.3095904388,
-     "roc": -0.1444965019761264,
+     "ema200": 1536121.396189436,
+     "roc": -0.14348472111612542,
      "tren": false,
      "entry": false,
      "exit": true,
@@ -5930,11 +5936,11 @@
     {
      "pair": "ADAIDR",
      "valid_fitur": true,
-     "close": 2988,
+     "close": 2995,
      "hh": 3315,
      "ll": 2982,
-     "ema200": 3211.4421226759655,
-     "roc": -0.09728096676737163,
+     "ema200": 3209.2884707266976,
+     "roc": -0.09653092006033182,
      "tren": false,
      "entry": false,
      "exit": true,
@@ -5947,42 +5953,42 @@
      "candle": null,
      "order_book": null,
      "n_candle": 1600,
-     "candle_terakhir": 1794650400
+     "candle_terakhir": 1794654000
     },
     {
      "pair": "ETHIDR",
      "candle": null,
      "order_book": null,
      "n_candle": 1600,
-     "candle_terakhir": 1794650400
+     "candle_terakhir": 1794654000
     },
     {
      "pair": "XRPIDR",
      "candle": null,
      "order_book": null,
      "n_candle": 1600,
-     "candle_terakhir": 1794650400
+     "candle_terakhir": 1794654000
     },
     {
      "pair": "DOGEIDR",
      "candle": null,
      "order_book": null,
      "n_candle": 1600,
-     "candle_terakhir": 1794650400
+     "candle_terakhir": 1794654000
     },
     {
      "pair": "SOLIDR",
      "candle": null,
      "order_book": null,
      "n_candle": 1600,
-     "candle_terakhir": 1794650400
+     "candle_terakhir": 1794654000
     },
     {
      "pair": "ADAIDR",
      "candle": null,
      "order_book": null,
      "n_candle": 1600,
-     "candle_terakhir": 1794650400
+     "candle_terakhir": 1794654000
     }
    ]
   }
@@ -5992,51 +5998,51 @@
    "pair": "BTCIDR",
    "backtest_spread": 8.105550478328798e-7,
    "backtest_n": 3,
-   "semua_n": 9,
-   "n_lokal": 8,
-   "n_log_bot": 1,
+   "semua_n": 20,
+   "n_lokal": 18,
+   "n_log_bot": 2,
    "semua_spread_median": 8.105550478328798e-7,
    "semua_spread_maks": 0.0008902375867041682,
    "backtest_slip_beli": 0,
    "semua_slip_beli": 0,
    "backtest_slip_jual": 0,
-   "semua_slip_jual": 0
+   "semua_slip_jual": 1.0948512424446832e-7
   },
   {
    "pair": "ETHIDR",
    "backtest_spread": 0.00037230615021121216,
    "backtest_n": 3,
-   "semua_n": 9,
-   "n_lokal": 8,
-   "n_log_bot": 1,
+   "semua_n": 20,
+   "n_lokal": 18,
+   "n_log_bot": 2,
    "semua_spread_median": 0.000714847380084352,
    "semua_spread_maks": 0.0020878916584438057,
    "backtest_slip_beli": 0,
    "semua_slip_beli": 0,
    "backtest_slip_jual": 0.00042486219899728894,
-   "semua_slip_jual": 0
+   "semua_slip_jual": 0.00010195998182271904
   },
   {
    "pair": "XRPIDR",
    "backtest_spread": 0.00005515567689804473,
    "backtest_n": 3,
-   "semua_n": 9,
-   "n_lokal": 8,
-   "n_log_bot": 1,
-   "semua_spread_median": 0.0006621420294653203,
+   "semua_n": 20,
+   "n_lokal": 18,
+   "n_log_bot": 2,
+   "semua_spread_median": 0.00046856585867601224,
    "semua_spread_maks": 0.0012662060612733629,
    "backtest_slip_beli": 0,
    "semua_slip_beli": 0,
    "backtest_slip_jual": 0.0004284871086039921,
-   "semua_slip_jual": 0.0004284871086039921
+   "semua_slip_jual": 0.00008454053007034279
   },
   {
    "pair": "DOGEIDR",
    "backtest_spread": 0.0017376194613379669,
    "backtest_n": 3,
-   "semua_n": 9,
-   "n_lokal": 8,
-   "n_log_bot": 1,
+   "semua_n": 20,
+   "n_lokal": 18,
+   "n_log_bot": 2,
    "semua_spread_median": 0.0017316017316017316,
    "semua_spread_maks": 0.002600780234070221,
    "backtest_slip_beli": 0,
@@ -6048,29 +6054,29 @@
    "pair": "SOLIDR",
    "backtest_spread": 0.0002617215002049431,
    "backtest_n": 3,
-   "semua_n": 9,
-   "n_lokal": 8,
-   "n_log_bot": 1,
-   "semua_spread_median": 0.000988527536755693,
+   "semua_n": 20,
+   "n_lokal": 18,
+   "n_log_bot": 2,
+   "semua_spread_median": 0.0009881969645435414,
    "semua_spread_maks": 0.0017477433369531966,
    "backtest_slip_beli": 0,
    "semua_slip_beli": 0,
    "backtest_slip_jual": 0.0001249005290789862,
-   "semua_slip_jual": 0.000019156044307355735
+   "semua_slip_jual": 0.00007541125894866552
   },
   {
    "pair": "ADAIDR",
    "backtest_spread": 0.0016686133822793258,
    "backtest_n": 3,
-   "semua_n": 9,
-   "n_lokal": 8,
-   "n_log_bot": 1,
-   "semua_spread_median": 0.0030015007503751876,
-   "semua_spread_maks": 0.004668222740913638,
+   "semua_n": 20,
+   "n_lokal": 18,
+   "n_log_bot": 2,
+   "semua_spread_median": 0.003496198601908607,
+   "semua_spread_maks": 0.005333333333333333,
    "backtest_slip_beli": 0,
    "semua_slip_beli": 0,
    "backtest_slip_jual": 0.0004507850033397265,
-   "semua_slip_jual": 0.00033322009347658277
+   "semua_slip_jual": 0.0001214417913164012
   }
  ],
  "gap": {
@@ -6146,23 +6152,95 @@
     "exit_bt": 1,
     "close_fwd": 2988,
     "close_bt": 2988
+   },
+   {
+    "candle": 1794654000,
+    "pair": "BTCIDR",
+    "regime_fwd": 0,
+    "regime_bt": 0,
+    "entry_fwd": 0,
+    "entry_bt": 0,
+    "exit_fwd": 1,
+    "exit_bt": 1,
+    "close_fwd": 1234902000,
+    "close_bt": 1234902000
+   },
+   {
+    "candle": 1794654000,
+    "pair": "ETHIDR",
+    "regime_fwd": 0,
+    "regime_bt": 0,
+    "entry_fwd": 0,
+    "entry_bt": 0,
+    "exit_fwd": 1,
+    "exit_bt": 1,
+    "close_fwd": 35007000,
+    "close_bt": 35007000
+   },
+   {
+    "candle": 1794654000,
+    "pair": "XRPIDR",
+    "regime_fwd": 0,
+    "regime_bt": 0,
+    "entry_fwd": 0,
+    "entry_bt": 0,
+    "exit_fwd": 1,
+    "exit_bt": 1,
+    "close_fwd": 18249,
+    "close_bt": 18249
+   },
+   {
+    "candle": 1794654000,
+    "pair": "DOGEIDR",
+    "regime_fwd": 0,
+    "regime_bt": 0,
+    "entry_fwd": 0,
+    "entry_bt": 0,
+    "exit_fwd": 1,
+    "exit_bt": 1,
+    "close_fwd": 1158,
+    "close_bt": 1158
+   },
+   {
+    "candle": 1794654000,
+    "pair": "SOLIDR",
+    "regime_fwd": 0,
+    "regime_bt": 0,
+    "entry_fwd": 0,
+    "entry_bt": 0,
+    "exit_fwd": 1,
+    "exit_bt": 1,
+    "close_fwd": 1393845,
+    "close_bt": 1393845
+   },
+   {
+    "candle": 1794654000,
+    "pair": "ADAIDR",
+    "regime_fwd": 0,
+    "regime_bt": 0,
+    "entry_fwd": 0,
+    "entry_bt": 0,
+    "exit_fwd": 1,
+    "exit_bt": 1,
+    "close_fwd": 2995,
+    "close_bt": 2995
    }
   ],
   "jendela": {
    "candle_awal": 1794650400,
-   "candle_akhir": 1794650400,
+   "candle_akhir": 1794654000,
    "awal_iso": "2026-11-14T10:00:00.000Z",
-   "akhir_iso": "2026-11-14T10:00:00.000Z",
-   "jam": 1
+   "akhir_iso": "2026-11-14T11:00:00.000Z",
+   "jam": 2
   },
   "sinyal": {
-   "baris": 6,
-   "tersedia_di_backtest": 6,
-   "cocok": 6,
+   "baris": 12,
+   "tersedia_di_backtest": 12,
+   "cocok": 12,
    "tidak_cocok": []
   },
   "candle_konsisten": {
-   "tumpang_tindih": 11670,
+   "tumpang_tindih": 11664,
    "close_beda": 0
   },
   "backtest_jendela": {
@@ -6298,26 +6376,26 @@
    },
    {
     "nama": "forward.bh_btc_return (log mentah vs state /api/data)",
-    "hitung_ulang": -0.0032382916698635578,
-    "sumber": -0.0032382916698635578,
+    "hitung_ulang": -0.003409379911245458,
+    "sumber": -0.003409379911245458,
     "cocok": true
    },
    {
     "nama": "forward.bh_btc_mdd (log mentah vs state /api/data)",
-    "hitung_ulang": -0.0032382916698635578,
-    "sumber": -0.0032382916698635578,
+    "hitung_ulang": -0.003409379911245458,
+    "sumber": -0.003409379911245458,
     "cocok": true
    },
    {
     "nama": "forward.candle_diproses (log mentah vs state /api/data)",
-    "hitung_ulang": 1,
-    "sumber": 1,
+    "hitung_ulang": 2,
+    "sumber": 2,
     "cocok": true
    },
    {
     "nama": "forward.candle_tepat_waktu (log mentah vs state /api/data)",
-    "hitung_ulang": 1,
-    "sumber": 1,
+    "hitung_ulang": 2,
+    "sumber": 2,
     "cocok": true
    },
    {
