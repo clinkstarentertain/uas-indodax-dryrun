@@ -6,7 +6,7 @@
 Link Vercel (dashboard): https://uas-indodax-dryrun.vercel.app
 Data live dashboard: https://uas-indodax-dryrun.vercel.app/api/data
 Bukti freeze: ZIP menyertakan folder .git utuh. Commit freeze 7f112cd0b2e315061182788e1896ce5c43b11895 (tag freeze-uas), 14 Nov 2026 18:06:31 WIB.
-Link repositori GitHub: (diisi bila sudah di-push; riwayat sama dengan .git di ZIP)
+Link repositori GitHub: https://github.com/clinkstarentertain/uas-indodax-dryrun (publik, riwayat lengkap, tag freeze-uas)
 Catatan: paket diperbarui 15 Nov dini hari karena sesi pengerjaan terhenti saat laptop tidur (lewat tenggat 23.59). Paket versi 14 Nov 21.08 WIB juga ada di riwayat commit (61d3890). Freeze dan forward test baru dimulai 14 Nov (terlambat dari jadwal 4 Nov). Forward test parsial dilaporkan apa adanya, dan bot tetap berjalan 10 hari sampai ±24 Nov.
 ```
 

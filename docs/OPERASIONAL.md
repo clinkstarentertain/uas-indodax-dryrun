@@ -40,7 +40,7 @@ Simpan `CRON_SECRET` dan `BOT_URL` di `.env` lokal untuk scheduler. File `.env` 
    - Setiap panggilan berikut kode HTTP-nya dicatat di `scheduler/riwayat_panggilan.csv`.
    - Bila gagal atau mendapat 409, skrip mencoba lagi hingga 3 kali dengan jeda 20/40 detik.
    - Kelemahannya: laptop harus menyala dan tidak tidur. Kalau tidak, panggilan terlewat, dan hal itu terlihat di uptime.
-2. **GitHub Actions** ([.github/workflows/tick.yml](../.github/workflows/tick.yml), cron `7 * * * *`). Scheduler ini aktif begitu repositori di-push ke GitHub dan secret `CRON_SECRET` serta `BOT_URL` diisi di Settings → Secrets → Actions. Jadwal GitHub sering terlambat 5–30 menit, tetapi masih memenuhi definisi uptime (diproses sebelum candle berikutnya tertutup).
+2. **GitHub Actions** ([.github/workflows/tick.yml](../.github/workflows/tick.yml), cron `7 * * * *`). **Aktif sejak 15 Nov 2026 sekitar 03.20 WIB** di https://github.com/clinkstarentertain/uas-indodax-dryrun/actions, dengan secret `CRON_SECRET` dan `BOT_URL` terenkripsi di repository secrets. Scheduler ini tidak bergantung pada laptop. Uji `workflow_dispatch` pertama mendapat HTTP 200 `duplikat`. Jadwal GitHub sering terlambat 5–30 menit, tetapi masih memenuhi definisi uptime (diproses sebelum candle berikutnya tertutup).
 3. **Vercel Cron** harian `7 17 * * *` (00.07 WIB, [vercel.json](../vercel.json)). Ini cadangan agar ekuitas harian selalu tercatat pada panggilan pertama sesudah 00.00 WIB.
 
 Beberapa scheduler yang memanggil candle yang sama **aman**. Panggilan kedua ditolak oleh `state.lastCandle`, yang menghasilkan status `duplikat`. Bila keduanya berjalan bersamaan, `ifMatch` ETag menolak salah satunya (status `konflik`, HTTP 409). Kedua jenis panggilan itu tetap dicatat di `calls/`.

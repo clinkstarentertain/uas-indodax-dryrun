@@ -10,6 +10,7 @@ Backtest dan bot memakai **fungsi sinyal yang sama**, yaitu [lib/strategy.js](li
 
 ## Link
 
+- Repositori GitHub (publik, riwayat lengkap + tag `freeze-uas`): https://github.com/clinkstarentertain/uas-indodax-dryrun
 - Dashboard Vercel: https://uas-indodax-dryrun.vercel.app
 - Data mentah dashboard: https://uas-indodax-dryrun.vercel.app/api/data
 - Dashboard offline: `laporan/dashboard_offline.html` (bisa dibuka tanpa internet)
