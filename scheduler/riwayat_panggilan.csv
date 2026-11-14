@@ -3,3 +3,5 @@
 2026-11-14T19:12:44+07:00,200,"{'status':'duplikat','candle':1794654000,'lastCandle':1794654000}"
 2026-11-14T20:07:06+07:00,200,"{'status':'ok','candle':1794657600,'ekuitas':100000000,'order':0,'diblokir':0,'error_api':0}"
 2026-11-14T21:07:07+07:00,200,"{'status':'ok','candle':1794661200,'ekuitas':100000000,'order':0,'diblokir':0,'error_api':0}"
+2026-11-15T03:00:10+07:00,200,"{'status':'ok','candle':1794682800,'ekuitas':100000000,'order':0,'diblokir':0,'error_api':0}"
+2026-11-15T03:07:05+07:00,200,"{'status':'duplikat','candle':1794682800,'lastCandle':1794682800}"
