@@ -1,0 +1,8 @@
+# rahasia - tidak pernah dikomit
+.env
+.env.*
+!.env.example
+.vercel
+node_modules/
+tmp/
+*.log.tmp

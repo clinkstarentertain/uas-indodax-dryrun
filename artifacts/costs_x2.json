@@ -1,0 +1,67 @@
+{
+ "order_idr": 30000000,
+ "sampai_unix": 1794652107,
+ "dibuat": "2026-11-14T10:28:28.074Z",
+ "pasangan": {
+  "ADAIDR": {
+   "n_snapshot": 3,
+   "pertama": "1794651277.json",
+   "terakhir": "1794651877.json",
+   "half_spread": 0.0016686133822793258,
+   "spread": 0.0016686133822793258,
+   "slip_buy": 0,
+   "slip_sell": 0.000901570006679453,
+   "spread_maks": 0.003662393873813884
+  },
+  "BTCIDR": {
+   "n_snapshot": 3,
+   "pertama": "1794651274.json",
+   "terakhir": "1794651874.json",
+   "half_spread": 8.105550478328798e-07,
+   "spread": 8.105550478328798e-07,
+   "slip_buy": 0,
+   "slip_sell": 0,
+   "spread_maks": 8.105550478328798e-07
+  },
+  "DOGEIDR": {
+   "n_snapshot": 3,
+   "pertama": "1794651276.json",
+   "terakhir": "1794651876.json",
+   "half_spread": 0.0017376194613379669,
+   "spread": 0.0017376194613379669,
+   "slip_buy": 0,
+   "slip_sell": 0,
+   "spread_maks": 0.002600780234070221
+  },
+  "ETHIDR": {
+   "n_snapshot": 3,
+   "pertama": "1794651274.json",
+   "terakhir": "1794651874.json",
+   "half_spread": 0.00037230615021121216,
+   "spread": 0.00037230615021121216,
+   "slip_buy": 0,
+   "slip_sell": 0.0008497243979945779,
+   "spread_maks": 0.001030662200463798
+  },
+  "SOLIDR": {
+   "n_snapshot": 3,
+   "pertama": "1794651276.json",
+   "terakhir": "1794651877.json",
+   "half_spread": 0.0002617215002049431,
+   "spread": 0.0002617215002049431,
+   "slip_buy": 0,
+   "slip_sell": 0.0002498010581579724,
+   "spread_maks": 0.0009878663923313898
+  },
+  "XRPIDR": {
+   "n_snapshot": 3,
+   "pertama": "1794651275.json",
+   "terakhir": "1794651875.json",
+   "half_spread": 5.515567689804473e-05,
+   "spread": 5.515567689804473e-05,
+   "slip_buy": 0,
+   "slip_sell": 0.0008569742172079842,
+   "spread_maks": 0.0011033265294864015
+  }
+ }
+}

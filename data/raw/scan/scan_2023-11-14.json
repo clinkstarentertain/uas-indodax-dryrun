@@ -1,0 +1,1759 @@
+{
+"awal_backtest": "2023-11-14T00:00:00+00:00",
+"jendela": "30 hari sebelum awal",
+"meta": "pairs_20261114T1708.json",
+"hasil": {
+"BTCIDR": {
+"n_bar": 30,
+"error": null
+},
+"1INCHIDR": {
+"n_bar": 0,
+"error": null
+},
+"AAVEIDR": {
+"n_bar": 0,
+"error": null
+},
+"AAPLXIDR": {
+"n_bar": 0,
+"error": null
+},
+"ABIDR": {
+"n_bar": 0,
+"error": null
+},
+"ACEIDR": {
+"n_bar": 0,
+"error": null
+},
+"ACHIDR": {
+"n_bar": 30,
+"error": null
+},
+"ACNIDR": {
+"n_bar": 0,
+"error": null
+},
+"ACSIDR": {
+"n_bar": 0,
+"error": null
+},
+"ACTIDR": {
+"n_bar": 30,
+"error": null
+},
+"ADAIDR": {
+"n_bar": 30,
+"error": null
+},
+"AEROIDR": {
+"n_bar": 0,
+"error": null
+},
+"AEVOIDR": {
+"n_bar": 0,
+"error": null
+},
+"AGIIDR": {
+"n_bar": 0,
+"error": null
+},
+"AIIDR": {
+"n_bar": 0,
+"error": null
+},
+"AIHIDR": {
+"n_bar": 0,
+"error": null
+},
+"AIOZIDR": {
+"n_bar": 30,
+"error": null
+},
+"AIXBTIDR": {
+"n_bar": 0,
+"error": null
+},
+"ALEIDR": {
+"n_bar": 0,
+"error": null
+},
+"ALICEIDR": {
+"n_bar": 30,
+"error": null
+},
+"ALGOIDR": {
+"n_bar": 30,
+"error": null
+},
+"ALLOIDR": {
+"n_bar": 0,
+"error": null
+},
+"ALTIDR": {
+"n_bar": 30,
+"error": null
+},
+"AMZNXIDR": {
+"n_bar": 0,
+"error": null
+},
+"AMPIDR": {
+"n_bar": 30,
+"error": null
+},
+"ANIMEIDR": {
+"n_bar": 0,
+"error": null
+},
+"ANKRIDR": {
+"n_bar": 30,
+"error": null
+},
+"ANOAIDR": {
+"n_bar": 0,
+"error": null
+},
+"APEIDR": {
+"n_bar": 30,
+"error": null
+},
+"APEXIDR": {
+"n_bar": 0,
+"error": null
+},
+"API3IDR": {
+"n_bar": 30,
+"error": null
+},
+"APUIDR": {
+"n_bar": 0,
+"error": null
+},
+"ARBIDR": {
+"n_bar": 19,
+"error": null
+},
+"ARCIDR": {
+"n_bar": 0,
+"error": null
+},
+"ARKMIDR": {
+"n_bar": 0,
+"error": null
+},
+"ASETQUIDR": {
+"n_bar": 0,
+"error": null
+},
+"ASTERIDR": {
+"n_bar": 0,
+"error": null
+},
+"ATHIDR": {
+"n_bar": 0,
+"error": null
+},
+"ATOMIDR": {
+"n_bar": 30,
+"error": null
+},
+"AUCTIONIDR": {
+"n_bar": 30,
+"error": null
+},
+"AUDIOIDR": {
+"n_bar": 30,
+"error": null
+},
+"AUSDIDR": {
+"n_bar": 0,
+"error": null
+},
+"AVAIDR": {
+"n_bar": 0,
+"error": null
+},
+"AVNTIDR": {
+"n_bar": 0,
+"error": null
+},
+"AVAXIDR": {
+"n_bar": 30,
+"error": null
+},
+"AXLIDR": {
+"n_bar": 0,
+"error": null
+},
+"AXSIDR": {
+"n_bar": 30,
+"error": null
+},
+"AZTECIDR": {
+"n_bar": 0,
+"error": null
+},
+"BANANAS31IDR": {
+"n_bar": 0,
+"error": null
+},
+"BIDR": {
+"n_bar": 0,
+"error": null
+},
+"B2IDR": {
+"n_bar": 0,
+"error": null
+},
+"BANIDR": {
+"n_bar": 0,
+"error": null
+},
+"BANANAIDR": {
+"n_bar": 0,
+"error": null
+},
+"BANDIDR": {
+"n_bar": 0,
+"error": null
+},
+"BANKIDR": {
+"n_bar": 0,
+"error": null
+},
+"BATIDR": {
+"n_bar": 30,
+"error": null
+},
+"BCHIDR": {
+"n_bar": 30,
+"error": null
+},
+"BEAMIDR": {
+"n_bar": 0,
+"error": null
+},
+"BEATIDR": {
+"n_bar": 0,
+"error": null
+},
+"BGBIDR": {
+"n_bar": 0,
+"error": null
+},
+"BICOIDR": {
+"n_bar": 30,
+"error": null
+},
+"BIOIDR": {
+"n_bar": 0,
+"error": null
+},
+"BIRBIDR": {
+"n_bar": 0,
+"error": null
+},
+"BLURIDR": {
+"n_bar": 30,
+"error": null
+},
+"BMTIDR": {
+"n_bar": 0,
+"error": null
+},
+"BNBIDR": {
+"n_bar": 30,
+"error": null
+},
+"BNKRIDR": {
+"n_bar": 0,
+"error": null
+},
+"FORMIDR": {
+"n_bar": 0,
+"error": null
+},
+"BOMEIDR": {
+"n_bar": 0,
+"error": null
+},
+"BONKIDR": {
+"n_bar": 0,
+"error": null
+},
+"BPIDR": {
+"n_bar": 0,
+"error": null
+},
+"BRIDR": {
+"n_bar": 0,
+"error": null
+},
+"BRETTIDR": {
+"n_bar": 0,
+"error": null
+},
+"BSVIDR": {
+"n_bar": 0,
+"error": null
+},
+"CAKEIDR": {
+"n_bar": 30,
+"error": null
+},
+"CASTIDR": {
+"n_bar": 0,
+"error": null
+},
+"CATIDR": {
+"n_bar": 0,
+"error": null
+},
+"CATIIDR": {
+"n_bar": 0,
+"error": null
+},
+"CELOIDR": {
+"n_bar": 30,
+"error": null
+},
+"CELRIDR": {
+"n_bar": 30,
+"error": null
+},
+"CGPTIDR": {
+"n_bar": 0,
+"error": null
+},
+"CHEEMSIDR": {
+"n_bar": 0,
+"error": null
+},
+"CHILLGUYIDR": {
+"n_bar": 0,
+"error": null
+},
+"CHRIDR": {
+"n_bar": 30,
+"error": null
+},
+"CHZIDR": {
+"n_bar": 30,
+"error": null
+},
+"CJLIDR": {
+"n_bar": 0,
+"error": null
+},
+"CKBIDR": {
+"n_bar": 30,
+"error": null
+},
+"CNGIDR": {
+"n_bar": 0,
+"error": null
+},
+"COINXIDR": {
+"n_bar": 0,
+"error": null
+},
+"C98IDR": {
+"n_bar": 30,
+"error": null
+},
+"COLIDR": {
+"n_bar": 30,
+"error": null
+},
+"COMPIDR": {
+"n_bar": 30,
+"error": null
+},
+"CONXIDR": {
+"n_bar": 0,
+"error": null
+},
+"COWIDR": {
+"n_bar": 0,
+"error": null
+},
+"CRCLXIDR": {
+"n_bar": 0,
+"error": null
+},
+"CREAMIDR": {
+"n_bar": 0,
+"error": null
+},
+"CROIDR": {
+"n_bar": 30,
+"error": null
+},
+"CROAKIDR": {
+"n_bar": 0,
+"error": null
+},
+"CRVIDR": {
+"n_bar": 30,
+"error": null
+},
+"CSTIDR": {
+"n_bar": 0,
+"error": null
+},
+"CTCIDR": {
+"n_bar": 0,
+"error": null
+},
+"CTKIDR": {
+"n_bar": 0,
+"error": null
+},
+"CTSIIDR": {
+"n_bar": 30,
+"error": null
+},
+"CVCIDR": {
+"n_bar": 30,
+"error": null
+},
+"CVXIDR": {
+"n_bar": 30,
+"error": null
+},
+"CYBERIDR": {
+"n_bar": 0,
+"error": null
+},
+"DEGENIDR": {
+"n_bar": 0,
+"error": null
+},
+"DEPIDR": {
+"n_bar": 30,
+"error": null
+},
+"DEXEIDR": {
+"n_bar": 0,
+"error": null
+},
+"DFGIDR": {
+"n_bar": 30,
+"error": null
+},
+"DGBIDR": {
+"n_bar": 30,
+"error": null
+},
+"DODOIDR": {
+"n_bar": 0,
+"error": null
+},
+"DOGEIDR": {
+"n_bar": 30,
+"error": null
+},
+"DOGSIDR": {
+"n_bar": 0,
+"error": null
+},
+"DOTIDR": {
+"n_bar": 30,
+"error": null
+},
+"DRXIDR": {
+"n_bar": 0,
+"error": null
+},
+"DUSKIDR": {
+"n_bar": 0,
+"error": null
+},
+"EDENIDR": {
+"n_bar": 0,
+"error": null
+},
+"EDENAIDR": {
+"n_bar": 0,
+"error": null
+},
+"EGLDIDR": {
+"n_bar": 30,
+"error": null
+},
+"EIGENIDR": {
+"n_bar": 0,
+"error": null
+},
+"ENAIDR": {
+"n_bar": 0,
+"error": null
+},
+"ENJIDR": {
+"n_bar": 30,
+"error": null
+},
+"ENSIDR": {
+"n_bar": 30,
+"error": null
+},
+"EPICIDR": {
+"n_bar": 0,
+"error": null
+},
+"ETCIDR": {
+"n_bar": 30,
+"error": null
+},
+"ESPIDR": {
+"n_bar": 0,
+"error": null
+},
+"ETHIDR": {
+"n_bar": 30,
+"error": null
+},
+"ETHFIIDR": {
+"n_bar": 0,
+"error": null
+},
+"FANCIDR": {
+"n_bar": 0,
+"error": null
+},
+"FARTCOINIDR": {
+"n_bar": 0,
+"error": null
+},
+"FETIDR": {
+"n_bar": 0,
+"error": null
+},
+"FFIDR": {
+"n_bar": 0,
+"error": null
+},
+"FILIDR": {
+"n_bar": 30,
+"error": null
+},
+"FLOKIIDR": {
+"n_bar": 0,
+"error": null
+},
+"FLRIDR": {
+"n_bar": 30,
+"error": null
+},
+"FLUXIDR": {
+"n_bar": 30,
+"error": null
+},
+"FUELIDR": {
+"n_bar": 0,
+"error": null
+},
+"FUNIDR": {
+"n_bar": 0,
+"error": null
+},
+"GALAIDR": {
+"n_bar": 30,
+"error": null
+},
+"GAMEIDR": {
+"n_bar": 0,
+"error": null
+},
+"GENIUSIDR": {
+"n_bar": 0,
+"error": null
+},
+"GLIDRIDR": {
+"n_bar": 0,
+"error": null
+},
+"GOIDRIDR": {
+"n_bar": 0,
+"error": null
+},
+"GIGAIDR": {
+"n_bar": 0,
+"error": null
+},
+"GIGGLEIDR": {
+"n_bar": 0,
+"error": null
+},
+"GLMIDR": {
+"n_bar": 30,
+"error": null
+},
+"GMTIDR": {
+"n_bar": 30,
+"error": null
+},
+"GMXIDR": {
+"n_bar": 0,
+"error": null
+},
+"GNOIDR": {
+"n_bar": 30,
+"error": null
+},
+"GOATIDR": {
+"n_bar": 0,
+"error": null
+},
+"GOOGLXIDR": {
+"n_bar": 0,
+"error": null
+},
+"GPSIDR": {
+"n_bar": 0,
+"error": null
+},
+"GRASSIDR": {
+"n_bar": 0,
+"error": null
+},
+"GIDR": {
+"n_bar": 0,
+"error": null
+},
+"GRIFFAINIDR": {
+"n_bar": 0,
+"error": null
+},
+"GRTIDR": {
+"n_bar": 30,
+"error": null
+},
+"GTCIDR": {
+"n_bar": 30,
+"error": null
+},
+"GWEIIDR": {
+"n_bar": 0,
+"error": null
+},
+"HIDR": {
+"n_bar": 0,
+"error": null
+},
+"HAEDALIDR": {
+"n_bar": 0,
+"error": null
+},
+"HARTIDR": {
+"n_bar": 30,
+"error": null
+},
+"HBARIDR": {
+"n_bar": 30,
+"error": null
+},
+"HFTIDR": {
+"n_bar": 0,
+"error": null
+},
+"HIGHIDR": {
+"n_bar": 30,
+"error": null
+},
+"HIVEIDR": {
+"n_bar": 30,
+"error": null
+},
+"HMSTRIDR": {
+"n_bar": 0,
+"error": null
+},
+"HNTIDR": {
+"n_bar": 30,
+"error": null
+},
+"HOMEIDR": {
+"n_bar": 0,
+"error": null
+},
+"HOTIDR": {
+"n_bar": 30,
+"error": null
+},
+"HUMAIDR": {
+"n_bar": 0,
+"error": null
+},
+"HYPEIDR": {
+"n_bar": 0,
+"error": null
+},
+"HYPERIDR": {
+"n_bar": 0,
+"error": null
+},
+"MYROIDR": {
+"n_bar": 0,
+"error": null
+},
+"MYXIDR": {
+"n_bar": 0,
+"error": null
+},
+"IDIDR": {
+"n_bar": 0,
+"error": null
+},
+"ICNTIDR": {
+"n_bar": 0,
+"error": null
+},
+"ICPIDR": {
+"n_bar": 0,
+"error": null
+},
+"IDRXIDR": {
+"n_bar": 0,
+"error": null
+},
+"IDRTIDR": {
+"n_bar": 0,
+"error": null
+},
+"ILVIDR": {
+"n_bar": 0,
+"error": null
+},
+"IMXIDR": {
+"n_bar": 30,
+"error": null
+},
+"INDRIDR": {
+"n_bar": 0,
+"error": null
+},
+"INJIDR": {
+"n_bar": 30,
+"error": null
+},
+"IOIDR": {
+"n_bar": 0,
+"error": null
+},
+"IOSTIDR": {
+"n_bar": 30,
+"error": null
+},
+"IOTAIDR": {
+"n_bar": 30,
+"error": null
+},
+"IOTXIDR": {
+"n_bar": 30,
+"error": null
+},
+"IQIDR": {
+"n_bar": 0,
+"error": null
+},
+"ISLMIDR": {
+"n_bar": 0,
+"error": null
+},
+"JASMYIDR": {
+"n_bar": 30,
+"error": null
+},
+"JELLYJELLYIDR": {
+"n_bar": 0,
+"error": null
+},
+"JOEIDR": {
+"n_bar": 0,
+"error": null
+},
+"JUPIDR": {
+"n_bar": 0,
+"error": null
+},
+"JSTIDR": {
+"n_bar": 30,
+"error": null
+},
+"JTOIDR": {
+"n_bar": 0,
+"error": null
+},
+"KAIAIDR": {
+"n_bar": 0,
+"error": null
+},
+"KAITOIDR": {
+"n_bar": 0,
+"error": null
+},
+"KDAGIDR": {
+"n_bar": 30,
+"error": null
+},
+"KERNELIDR": {
+"n_bar": 0,
+"error": null
+},
+"KMNOIDR": {
+"n_bar": 0,
+"error": null
+},
+"KNCIDR": {
+"n_bar": 30,
+"error": null
+},
+"KOMAIDR": {
+"n_bar": 0,
+"error": null
+},
+"KSMIDR": {
+"n_bar": 30,
+"error": null
+},
+"KTAIDR": {
+"n_bar": 0,
+"error": null
+},
+"LDOIDR": {
+"n_bar": 30,
+"error": null
+},
+"LEOIDR": {
+"n_bar": 30,
+"error": null
+},
+"LITIDR": {
+"n_bar": 0,
+"error": null
+},
+"LINEAIDR": {
+"n_bar": 0,
+"error": null
+},
+"LINKIDR": {
+"n_bar": 30,
+"error": null
+},
+"LISTAIDR": {
+"n_bar": 0,
+"error": null
+},
+"L3IDR": {
+"n_bar": 0,
+"error": null
+},
+"LSKIDR": {
+"n_bar": 0,
+"error": null
+},
+"LPTIDR": {
+"n_bar": 30,
+"error": null
+},
+"LQTYIDR": {
+"n_bar": 30,
+"error": null
+},
+"LTCIDR": {
+"n_bar": 30,
+"error": null
+},
+"LUNAIDR": {
+"n_bar": 30,
+"error": null
+},
+"LUNCIDR": {
+"n_bar": 0,
+"error": null
+},
+"LYFEIDR": {
+"n_bar": 30,
+"error": null
+},
+"MAGICIDR": {
+"n_bar": 0,
+"error": null
+},
+"MANAIDR": {
+"n_bar": 30,
+"error": null
+},
+"MANTAIDR": {
+"n_bar": 0,
+"error": null
+},
+"MARSCOINIDR": {
+"n_bar": 0,
+"error": null
+},
+"MASKIDR": {
+"n_bar": 30,
+"error": null
+},
+"MAVIDR": {
+"n_bar": 0,
+"error": null
+},
+"MAVIAIDR": {
+"n_bar": 0,
+"error": null
+},
+"MCTIDR": {
+"n_bar": 30,
+"error": null
+},
+"MEIDR": {
+"n_bar": 0,
+"error": null
+},
+"MELANIAIDR": {
+"n_bar": 0,
+"error": null
+},
+"MEMEIDR": {
+"n_bar": 0,
+"error": null
+},
+"METIDR": {
+"n_bar": 0,
+"error": null
+},
+"METAIDR": {
+"n_bar": 30,
+"error": null
+},
+"METISIDR": {
+"n_bar": 0,
+"error": null
+},
+"MEWIDR": {
+"n_bar": 0,
+"error": null
+},
+"MITOIDR": {
+"n_bar": 0,
+"error": null
+},
+"MNTIDR": {
+"n_bar": 0,
+"error": null
+},
+"MOCAIDR": {
+"n_bar": 0,
+"error": null
+},
+"MOGIDR": {
+"n_bar": 0,
+"error": null
+},
+"MOLTIDR": {
+"n_bar": 0,
+"error": null
+},
+"MONIDR": {
+"n_bar": 0,
+"error": null
+},
+"MOODENGIDR": {
+"n_bar": 0,
+"error": null
+},
+"MORPHOIDR": {
+"n_bar": 0,
+"error": null
+},
+"MOVEIDR": {
+"n_bar": 0,
+"error": null
+},
+"MPROIDR": {
+"n_bar": 0,
+"error": null
+},
+"MRSIDR": {
+"n_bar": 30,
+"error": null
+},
+"MTCIDR": {
+"n_bar": 0,
+"error": null
+},
+"MUBARAKIDR": {
+"n_bar": 0,
+"error": null
+},
+"NBTIDR": {
+"n_bar": 30,
+"error": null
+},
+"NEARIDR": {
+"n_bar": 30,
+"error": null
+},
+"NEIROIDR": {
+"n_bar": 0,
+"error": null
+},
+"NEOIDR": {
+"n_bar": 30,
+"error": null
+},
+"NEOIDRIDR": {
+"n_bar": 0,
+"error": null
+},
+"NEONIDR": {
+"n_bar": 0,
+"error": null
+},
+"NEWTIDR": {
+"n_bar": 0,
+"error": null
+},
+"NEXOIDR": {
+"n_bar": 30,
+"error": null
+},
+"NIGHTIDR": {
+"n_bar": 0,
+"error": null
+},
+"NMDIDR": {
+"n_bar": 0,
+"error": null
+},
+"NMRIDR": {
+"n_bar": 0,
+"error": null
+},
+"NOMIDR": {
+"n_bar": 0,
+"error": null
+},
+"NOVAIDR": {
+"n_bar": 0,
+"error": null
+},
+"NPCIDR": {
+"n_bar": 0,
+"error": null
+},
+"NRGIDR": {
+"n_bar": 30,
+"error": null
+},
+"NUSAIDR": {
+"n_bar": 30,
+"error": null
+},
+"NVDAXIDR": {
+"n_bar": 0,
+"error": null
+},
+"NXAIDR": {
+"n_bar": 0,
+"error": null
+},
+"OGNIDR": {
+"n_bar": 30,
+"error": null
+},
+"OKBIDR": {
+"n_bar": 30,
+"error": null
+},
+"OKUSDIDR": {
+"n_bar": 0,
+"error": null
+},
+"ONDOIDR": {
+"n_bar": 0,
+"error": null
+},
+"ONLIDR": {
+"n_bar": 0,
+"error": null
+},
+"ONTIDR": {
+"n_bar": 30,
+"error": null
+},
+"OPIDR": {
+"n_bar": 0,
+"error": null
+},
+"ORBSIDR": {
+"n_bar": 30,
+"error": null
+},
+"ORCAIDR": {
+"n_bar": 0,
+"error": null
+},
+"ORDERIDR": {
+"n_bar": 0,
+"error": null
+},
+"PAXGIDR": {
+"n_bar": 30,
+"error": null
+},
+"PAYAIIDR": {
+"n_bar": 0,
+"error": null
+},
+"PENDLEIDR": {
+"n_bar": 0,
+"error": null
+},
+"PENGUIDR": {
+"n_bar": 0,
+"error": null
+},
+"PEOPLEIDR": {
+"n_bar": 0,
+"error": null
+},
+"PEPEIDR": {
+"n_bar": 0,
+"error": null
+},
+"PLPAIDR": {
+"n_bar": 0,
+"error": null
+},
+"PLUMEIDR": {
+"n_bar": 0,
+"error": null
+},
+"GNSIDR": {
+"n_bar": 0,
+"error": null
+},
+"PHAIDR": {
+"n_bar": 0,
+"error": null
+},
+"PIEVERSEIDR": {
+"n_bar": 0,
+"error": null
+},
+"PIPPINIDR": {
+"n_bar": 0,
+"error": null
+},
+"PIXELIDR": {
+"n_bar": 0,
+"error": null
+},
+"PMIDR": {
+"n_bar": 0,
+"error": null
+},
+"PNUTIDR": {
+"n_bar": 0,
+"error": null
+},
+"POLSIDR": {
+"n_bar": 0,
+"error": null
+},
+"POLIDR": {
+"n_bar": 0,
+"error": null
+},
+"PONDIDR": {
+"n_bar": 0,
+"error": null
+},
+"PONKEIDR": {
+"n_bar": 0,
+"error": null
+},
+"PORTALIDR": {
+"n_bar": 0,
+"error": null
+},
+"POPCATIDR": {
+"n_bar": 0,
+"error": null
+},
+"POWRIDR": {
+"n_bar": 0,
+"error": null
+},
+"PRIMEIDR": {
+"n_bar": 0,
+"error": null
+},
+"PROMIDR": {
+"n_bar": 0,
+"error": null
+},
+"PROVEIDR": {
+"n_bar": 0,
+"error": null
+},
+"PUFFERIDR": {
+"n_bar": 0,
+"error": null
+},
+"PUMPIDR": {
+"n_bar": 0,
+"error": null
+},
+"PYTHIDR": {
+"n_bar": 0,
+"error": null
+},
+"QNTIDR": {
+"n_bar": 30,
+"error": null
+},
+"RADIDR": {
+"n_bar": 0,
+"error": null
+},
+"RAREIDR": {
+"n_bar": 0,
+"error": null
+},
+"RAYIDR": {
+"n_bar": 0,
+"error": null
+},
+"REDIDR": {
+"n_bar": 0,
+"error": null
+},
+"AUGURIDR": {
+"n_bar": 0,
+"error": null
+},
+"REQIDR": {
+"n_bar": 0,
+"error": null
+},
+"REZIDR": {
+"n_bar": 0,
+"error": null
+},
+"RIVERIDR": {
+"n_bar": 0,
+"error": null
+},
+"RLCIDR": {
+"n_bar": 30,
+"error": null
+},
+"RENDERIDR": {
+"n_bar": 0,
+"error": null
+},
+"RPLIDR": {
+"n_bar": 30,
+"error": null
+},
+"RSRIDR": {
+"n_bar": 30,
+"error": null
+},
+"RVNIDR": {
+"n_bar": 30,
+"error": null
+},
+"SANDIDR": {
+"n_bar": 30,
+"error": null
+},
+"SAFEIDR": {
+"n_bar": 0,
+"error": null
+},
+"SAHARAIDR": {
+"n_bar": 0,
+"error": null
+},
+"SAPIENIDR": {
+"n_bar": 0,
+"error": null
+},
+"SENTIDR": {
+"n_bar": 0,
+"error": null
+},
+"SFIIDR": {
+"n_bar": 30,
+"error": null
+},
+"SFPIDR": {
+"n_bar": 30,
+"error": null
+},
+"SHIBIDR": {
+"n_bar": 0,
+"error": null
+},
+"SHELLIDR": {
+"n_bar": 0,
+"error": null
+},
+"SIGNIDR": {
+"n_bar": 0,
+"error": null
+},
+"SHOWIDR": {
+"n_bar": 0,
+"error": null
+},
+"SKLIDR": {
+"n_bar": 30,
+"error": null
+},
+"SKRIDR": {
+"n_bar": 0,
+"error": null
+},
+"SKYIDR": {
+"n_bar": 0,
+"error": null
+},
+"SKYAIDR": {
+"n_bar": 0,
+"error": null
+},
+"SKYAIIDR": {
+"n_bar": 0,
+"error": null
+},
+"SNIDR": {
+"n_bar": 0,
+"error": null
+},
+"SNTIDR": {
+"n_bar": 0,
+"error": null
+},
+"SNXIDR": {
+"n_bar": 30,
+"error": null
+},
+"SOLIDR": {
+"n_bar": 30,
+"error": null
+},
+"SOLAYERIDR": {
+"n_bar": 0,
+"error": null
+},
+"SOLVIDR": {
+"n_bar": 0,
+"error": null
+},
+"SOMIIDR": {
+"n_bar": 0,
+"error": null
+},
+"SIDR": {
+"n_bar": 0,
+"error": null
+},
+"SOONIDR": {
+"n_bar": 0,
+"error": null
+},
+"SPELLIDR": {
+"n_bar": 0,
+"error": null
+},
+"SPKIDR": {
+"n_bar": 0,
+"error": null
+},
+"SPXIDR": {
+"n_bar": 0,
+"error": null
+},
+"SQDIDR": {
+"n_bar": 0,
+"error": null
+},
+"SSVIDR": {
+"n_bar": 30,
+"error": null
+},
+"STGIDR": {
+"n_bar": 30,
+"error": null
+},
+"STIKIDR": {
+"n_bar": 30,
+"error": null
+},
+"STOIDR": {
+"n_bar": 0,
+"error": null
+},
+"STRKIDR": {
+"n_bar": 0,
+"error": null
+},
+"STREAMIDR": {
+"n_bar": 0,
+"error": null
+},
+"SUIIDR": {
+"n_bar": 0,
+"error": null
+},
+"SUNIDR": {
+"n_bar": 0,
+"error": null
+},
+"SUNDOGIDR": {
+"n_bar": 0,
+"error": null
+},
+"SUPERIDR": {
+"n_bar": 0,
+"error": null
+},
+"SUSHIIDR": {
+"n_bar": 30,
+"error": null
+},
+"SXTIDR": {
+"n_bar": 0,
+"error": null
+},
+"SYRUPIDR": {
+"n_bar": 0,
+"error": null
+},
+"TAGIDR": {
+"n_bar": 0,
+"error": null
+},
+"TAIKOIDR": {
+"n_bar": 0,
+"error": null
+},
+"TELIDR": {
+"n_bar": 30,
+"error": null
+},
+"TENIDR": {
+"n_bar": 30,
+"error": null
+},
+"TFUELIDR": {
+"n_bar": 30,
+"error": null
+},
+"THETAIDR": {
+"n_bar": 30,
+"error": null
+},
+"TIDR": {
+"n_bar": 0,
+"error": null
+},
+"TIAIDR": {
+"n_bar": 0,
+"error": null
+},
+"TLMIDR": {
+"n_bar": 0,
+"error": null
+},
+"TMGIDR": {
+"n_bar": 30,
+"error": null
+},
+"TNSRIDR": {
+"n_bar": 0,
+"error": null
+},
+"TOKENIDR": {
+"n_bar": 0,
+"error": null
+},
+"TONIDR": {
+"n_bar": 0,
+"error": null
+},
+"TOSHIIDR": {
+"n_bar": 0,
+"error": null
+},
+"TRACIDR": {
+"n_bar": 0,
+"error": null
+},
+"TRBIDR": {
+"n_bar": 5,
+"error": null
+},
+"TRIAIDR": {
+"n_bar": 0,
+"error": null
+},
+"TROLLSOLIDR": {
+"n_bar": 0,
+"error": null
+},
+"TRUMPIDR": {
+"n_bar": 0,
+"error": null
+},
+"TRXIDR": {
+"n_bar": 30,
+"error": null
+},
+"TSLAXIDR": {
+"n_bar": 0,
+"error": null
+},
+"TURBOIDR": {
+"n_bar": 0,
+"error": null
+},
+"TURTLEIDR": {
+"n_bar": 0,
+"error": null
+},
+"TUSDIDR": {
+"n_bar": 30,
+"error": null
+},
+"UBIDR": {
+"n_bar": 0,
+"error": null
+},
+"UAIIDR": {
+"n_bar": 0,
+"error": null
+},
+"UCJLIDR": {
+"n_bar": 19,
+"error": null
+},
+"UMAIDR": {
+"n_bar": 30,
+"error": null
+},
+"UNIIDR": {
+"n_bar": 30,
+"error": null
+},
+"UNMDIDR": {
+"n_bar": 0,
+"error": null
+},
+"USDCIDR": {
+"n_bar": 30,
+"error": null
+},
+"USATIDR": {
+"n_bar": 0,
+"error": null
+},
+"USDTIDR": {
+"n_bar": 30,
+"error": null
+},
+"USDXIDR": {
+"n_bar": 0,
+"error": null
+},
+"USELESSIDR": {
+"n_bar": 0,
+"error": null
+},
+"VANRYIDR": {
+"n_bar": 0,
+"error": null
+},
+"VCGIDR": {
+"n_bar": 30,
+"error": null
+},
+"VELOIDR": {
+"n_bar": 30,
+"error": null
+},
+"VELOFINIDR": {
+"n_bar": 0,
+"error": null
+},
+"VELVETIDR": {
+"n_bar": 0,
+"error": null
+},
+"VETIDR": {
+"n_bar": 30,
+"error": null
+},
+"VEXIDR": {
+"n_bar": 30,
+"error": null
+},
+"VINEIDR": {
+"n_bar": 0,
+"error": null
+},
+"VIRTUALIDR": {
+"n_bar": 0,
+"error": null
+},
+"VVVIDR": {
+"n_bar": 0,
+"error": null
+},
+"W3FIDR": {
+"n_bar": 0,
+"error": null
+},
+"W3SIDR": {
+"n_bar": 0,
+"error": null
+},
+"WAVESIDR": {
+"n_bar": 30,
+"error": null
+},
+"WBTCIDR": {
+"n_bar": 30,
+"error": null
+},
+"WCTIDR": {
+"n_bar": 0,
+"error": null
+},
+"WEALTHIDR": {
+"n_bar": 0,
+"error": null
+},
+"WIFIDR": {
+"n_bar": 0,
+"error": null
+},
+"WLDIDR": {
+"n_bar": 30,
+"error": null
+},
+"WLFIIDR": {
+"n_bar": 0,
+"error": null
+},
+"WOOIDR": {
+"n_bar": 30,
+"error": null
+},
+"WIDR": {
+"n_bar": 0,
+"error": null
+},
+"XAUTIDR": {
+"n_bar": 30,
+"error": null
+},
+"XCNIDR": {
+"n_bar": 0,
+"error": null
+},
+"XDCIDR": {
+"n_bar": 0,
+"error": null
+},
+"XPLIDR": {
+"n_bar": 0,
+"error": null
+},
+"XLMIDR": {
+"n_bar": 0,
+"error": null
+},
+"WEMIXIDR": {
+"n_bar": 30,
+"error": null
+},
+"XRIDR": {
+"n_bar": 0,
+"error": null
+},
+"XRPIDR": {
+"n_bar": 30,
+"error": null
+},
+"XTZIDR": {
+"n_bar": 30,
+"error": null
+},
+"XVSIDR": {
+"n_bar": 30,
+"error": null
+},
+"YFIIDR": {
+"n_bar": 30,
+"error": null
+},
+"YGGIDR": {
+"n_bar": 0,
+"error": null
+},
+"ZAMAIDR": {
+"n_bar": 0,
+"error": null
+},
+"ZBCNIDR": {
+"n_bar": 0,
+"error": null
+},
+"ZENIDR": {
+"n_bar": 0,
+"error": null
+},
+"ZEREBROIDR": {
+"n_bar": 0,
+"error": null
+},
+"ZILIDR": {
+"n_bar": 30,
+"error": null
+},
+"ZKCIDR": {
+"n_bar": 0,
+"error": null
+},
+"ZKJIDR": {
+"n_bar": 0,
+"error": null
+},
+"ZORAIDR": {
+"n_bar": 0,
+"error": null
+},
+"ZROIDR": {
+"n_bar": 0,
+"error": null
+},
+"ZRXIDR": {
+"n_bar": 30,
+"error": null
+},
+"KITEIDR": {
+"n_bar": 0,
+"error": null
+}
+}
+}

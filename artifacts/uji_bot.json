@@ -1,0 +1,178 @@
+{
+ "dijalankan": "2026-11-14T10:30:53.643Z",
+ "lulus": 17,
+ "total": 17,
+ "hasil": [
+  {
+   "nama": "entry sama dengan backtest (pasangan & candle)",
+   "lulus": true,
+   "detail": {
+    "pair": "SOLIDR",
+    "candle": 1700046000,
+    "order": [
+     "SOLIDR:BELI"
+    ]
+   }
+  },
+  {
+   "nama": "fill beli di sisi ask (harga rata-rata >= best ask, bukan mid/close)",
+   "lulus": true,
+   "detail": {
+    "fill": 979500.3531540679,
+    "ask": 979500.3531540679,
+    "bid": 979499.6468459322
+   }
+  },
+  {
+   "nama": "ukuran posisi <= 30% ekuitas",
+   "lulus": true,
+   "detail": {
+    "nilai": 29999999.999793462
+   }
+  },
+  {
+   "nama": "idempoten: candle sama dipanggil lagi -> tidak dieksekusi",
+   "lulus": true,
+   "detail": {
+    "status": "duplikat",
+    "candle": 1700046000,
+    "lastCandle": 1700046000
+   }
+  },
+  {
+   "nama": "exit sama dengan backtest",
+   "lulus": true,
+   "detail": {
+    "candle": 1700532000,
+    "order": [
+     "SOLIDR:JUAL"
+    ]
+   }
+  },
+  {
+   "nama": "fill jual di sisi bid (harga rata-rata <= best bid)",
+   "lulus": true,
+   "detail": {
+    "fill": 855090.6574136897,
+    "bid": 856007.6913703857
+   }
+  },
+  {
+   "nama": "trade tertutup tercatat dengan fee + spread + slippage",
+   "lulus": true,
+   "detail": {
+    "pair": "SOLIDR",
+    "masuk": 1700050020,
+    "harga_masuk": 979500.3531540679,
+    "keluar": 1700536020,
+    "harga_keluar": 855090.6574136897,
+    "qty": 30.627860320000003,
+    "biaya_masuk": 29999999.99979347,
+    "fee_masuk": 97439.99999932919,
+    "nilai_keluar": 26189597.216203462,
+    "fee_keluar": 85063.81175822884,
+    "spread_rp": 20.26901817993878,
+    "slip_rp": 28086.787934383443,
+    "laba_bersih": -3992906.595347564,
+    "alasan": "close < close terendah M jam",
+    "laba_kotor": -3782295.726637443,
+    "return_pct": -13.266598738547374
+   }
+  },
+  {
+   "nama": "kill switch memblokir entry & tercatat",
+   "lulus": true,
+   "detail": [
+    {
+     "pair": "SOLIDR",
+     "reason": "kill switch aktif"
+    }
+   ]
+  },
+  {
+   "nama": "daily loss limit (hari WIB) memblokir entry",
+   "lulus": true,
+   "detail": {
+    "ekuitas_awal_hari": 110000000,
+    "batas": 106700000,
+    "tercapai": true
+   }
+  },
+  {
+   "nama": "candle hilang -> tidak entry",
+   "lulus": true,
+   "detail": [
+    {
+     "pair": "SOLIDR",
+     "reason": "data tidak valid: candle hilang sebelum 1697893200"
+    }
+   ]
+  },
+  {
+   "nama": "harga nol -> tidak entry",
+   "lulus": true,
+   "detail": [
+    {
+     "pair": "SOLIDR",
+     "reason": "data tidak valid: harga nol di 1697529600"
+    }
+   ]
+  },
+  {
+   "nama": "volume nol candle terakhir -> tidak entry",
+   "lulus": true,
+   "detail": [
+    {
+     "pair": "SOLIDR",
+     "reason": "data tidak valid: volume nol di candle terakhir 1700046000"
+    }
+   ]
+  },
+  {
+   "nama": "spread > 2% -> tidak entry",
+   "lulus": true,
+   "detail": [
+    {
+     "pair": "SOLIDR",
+     "reason": "data tidak valid: spread 3.05% > 2%"
+    }
+   ]
+  },
+  {
+   "nama": "order book kosong -> tidak entry",
+   "lulus": true,
+   "detail": [
+    {
+     "pair": "SOLIDR",
+     "reason": "data tidak valid: order book kosong"
+    }
+   ]
+  },
+  {
+   "nama": "candle basi (> 2x timeframe) -> tidak entry",
+   "lulus": true,
+   "detail": [
+    {
+     "pair": "SOLIDR",
+     "reason": "data tidak valid: candle tertutup terakhir lebih tua dari 2x timeframe"
+    }
+   ]
+  },
+  {
+   "nama": "dua panggilan serentak -> satu ok, satu ditolak",
+   "lulus": true,
+   "detail": [
+    "ok",
+    "konflik"
+   ]
+  },
+  {
+   "nama": "sinyal bot = sinyal backtest di candle yang sama (6 pasangan)",
+   "lulus": true,
+   "detail": {
+    "n": 6,
+    "beda": []
+   }
+  }
+ ]
+}

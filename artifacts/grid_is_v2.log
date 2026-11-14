@@ -1,0 +1,120 @@
+{
+  donchianIn: 72,
+  donchianOut: 24,
+  is_cagr: 0.4999657888222959,
+  is_mdd: -0.3250479771438858,
+  is_calmar: 1.5381292116178313,
+  is_trade: 424,
+  is_pf: 1.3471020093783583,
+  oos_return: -0.45024964036685555,
+  oos_mdd: -0.4744432438600933,
+  oos_trade: 189
+}
+{
+  donchianIn: 72,
+  donchianOut: 72,
+  is_cagr: 0.6722805306265465,
+  is_mdd: -0.38022757112457184,
+  is_calmar: 1.7681004263793667,
+  is_trade: 253,
+  is_pf: 1.567767277517198,
+  oos_return: -0.275280290282067,
+  oos_mdd: -0.36197530866439886,
+  oos_trade: 137
+}
+{
+  donchianIn: 72,
+  donchianOut: 168,
+  is_cagr: 0.7572154612167461,
+  is_mdd: -0.38872782268351813,
+  is_calmar: 1.9479322472712002,
+  is_trade: 183,
+  is_pf: 1.6728787312807674,
+  oos_return: -0.22236650103386746,
+  oos_mdd: -0.33120553564299104,
+  oos_trade: 116
+}
+{
+  donchianIn: 168,
+  donchianOut: 24,
+  is_cagr: 0.7317541958716292,
+  is_mdd: -0.19146070815345761,
+  is_calmar: 3.8219549218689877,
+  is_trade: 304,
+  is_pf: 1.8055701761505065,
+  oos_return: -0.28205029268191817,
+  oos_mdd: -0.3205927068964881,
+  oos_trade: 117
+}
+{
+  donchianIn: 168,
+  donchianOut: 72,
+  is_cagr: 1.2490423121500127,
+  is_mdd: -0.23018870636281497,
+  is_calmar: 5.426166782402079,
+  is_trade: 176,
+  is_pf: 2.549365425416347,
+  oos_return: -0.15353881476097408,
+  oos_mdd: -0.2824305537851619,
+  oos_trade: 82
+}
+{
+  donchianIn: 168,
+  donchianOut: 168,
+  is_cagr: 1.4037214899583272,
+  is_mdd: -0.27586249404941754,
+  is_calmar: 5.088482560107888,
+  is_trade: 126,
+  is_pf: 2.827790562930571,
+  oos_return: -0.13531611933423038,
+  oos_mdd: -0.2707329148428832,
+  oos_trade: 68
+}
+{
+  donchianIn: 336,
+  donchianOut: 24,
+  is_cagr: 0.7986235738046621,
+  is_mdd: -0.2080265769886992,
+  is_calmar: 3.839045882334767,
+  is_trade: 239,
+  is_pf: 1.9756300492895693,
+  oos_return: -0.14253322592120188,
+  oos_mdd: -0.24284304949529822,
+  oos_trade: 84
+}
+{
+  donchianIn: 336,
+  donchianOut: 72,
+  is_cagr: 0.929994896420137,
+  is_mdd: -0.30274923560328315,
+  is_calmar: 3.071832351837164,
+  is_trade: 134,
+  is_pf: 2.021155378588138,
+  oos_return: -0.047456142022555214,
+  oos_mdd: -0.19265004365650706,
+  oos_trade: 55
+}
+{
+  donchianIn: 336,
+  donchianOut: 168,
+  is_cagr: 1.0969714501611438,
+  is_mdd: -0.2895070353554723,
+  is_calmar: 3.7891011830307453,
+  is_trade: 93,
+  is_pf: 2.3879148638063574,
+  oos_return: 0.0013269312041690462,
+  oos_mdd: -0.16111455502255712,
+  oos_trade: 43
+}
+TERPILIH {
+  donchianIn: 168,
+  donchianOut: 72,
+  is_cagr: 1.2490423121500127,
+  is_mdd: -0.23018870636281497,
+  is_calmar: 5.426166782402079,
+  is_trade: 176,
+  is_pf: 2.549365425416347,
+  oos_return: -0.15353881476097408,
+  oos_mdd: -0.2824305537851619,
+  oos_trade: 82
+}

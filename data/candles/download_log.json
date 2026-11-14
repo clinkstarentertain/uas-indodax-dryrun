@@ -1,0 +1,32 @@
+{
+ "BTCIDR_60": {
+  "bar": 28834,
+  "diunduh_utc": "2026-11-14T10:14:38",
+  "server_time": 1794651278
+ },
+ "ETHIDR_60": {
+  "bar": 28834,
+  "diunduh_utc": "2026-11-14T10:15:08",
+  "server_time": 1794651308
+ },
+ "XRPIDR_60": {
+  "bar": 28834,
+  "diunduh_utc": "2026-11-14T10:15:51",
+  "server_time": 1794651351
+ },
+ "DOGEIDR_60": {
+  "bar": 28834,
+  "diunduh_utc": "2026-11-14T10:16:33",
+  "server_time": 1794651393
+ },
+ "SOLIDR_60": {
+  "bar": 28834,
+  "diunduh_utc": "2026-11-14T10:17:10",
+  "server_time": 1794651430
+ },
+ "ADAIDR_60": {
+  "bar": 28834,
+  "diunduh_utc": "2026-11-14T10:17:49",
+  "server_time": 1794651469
+ }
+}

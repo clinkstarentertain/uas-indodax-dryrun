@@ -1,0 +1,101 @@
+{
+ "params": {
+  "timeframe": "60",
+  "donchianIn": 168,
+  "donchianOut": 72,
+  "emaSlow": 200,
+  "btcRegimeEma": 720,
+  "maxPositions": 3,
+  "maxPositionFrac": 0.3,
+  "dailyLossLimit": 0.03,
+  "minOrderIdr": 25000,
+  "warmupBars": 800
+ },
+ "metrics": {
+  "periode": [
+   "2023-11-14",
+   "2026-11-14"
+  ],
+  "tahun": 3.0006844626967832,
+  "ekuitas_akhir": 428631570.50411946,
+  "return_total": 3.2863157050411944,
+  "cagr": 0.624226749238814,
+  "mdd": -0.3038372376151446,
+  "jumlah_trade": 258,
+  "win_rate": 0.3333333333333333,
+  "profit_factor": 1.6439956922408998,
+  "rata_untung_pct": 14.74927040039904,
+  "rata_rugi_pct": -3.1645533724434047,
+  "rata_untung_rp": 9755028.531020617,
+  "rata_rugi_rp": -2966865.5997886835,
+  "total_biaya_rp": 182239844.28617734,
+  "laba_kotor_rp": 510871414.7902969,
+  "porsi_biaya": 0.35672351008518133,
+  "bh_btc_return": 1.151866623110394,
+  "bh_btc_cagr": 0.29096106567703806,
+  "bh_btc_mdd": -0.4961281194155569
+ },
+ "posisi_terbuka": {},
+ "biaya": {
+  "ADAIDR": {
+   "n_snapshot": 3,
+   "pertama": "1794651277.json",
+   "terakhir": "1794651877.json",
+   "half_spread": 0.0008343066911396629,
+   "spread": 0.0016686133822793258,
+   "slip_buy": 0,
+   "slip_sell": 0.0004507850033397265,
+   "spread_maks": 0.003662393873813884
+  },
+  "BTCIDR": {
+   "n_snapshot": 3,
+   "pertama": "1794651274.json",
+   "terakhir": "1794651874.json",
+   "half_spread": 4.052775239164399e-7,
+   "spread": 8.105550478328798e-7,
+   "slip_buy": 0,
+   "slip_sell": 0,
+   "spread_maks": 8.105550478328798e-7
+  },
+  "DOGEIDR": {
+   "n_snapshot": 3,
+   "pertama": "1794651276.json",
+   "terakhir": "1794651876.json",
+   "half_spread": 0.0008688097306689834,
+   "spread": 0.0017376194613379669,
+   "slip_buy": 0,
+   "slip_sell": 0,
+   "spread_maks": 0.002600780234070221
+  },
+  "ETHIDR": {
+   "n_snapshot": 3,
+   "pertama": "1794651274.json",
+   "terakhir": "1794651874.json",
+   "half_spread": 0.00018615307510560608,
+   "spread": 0.00037230615021121216,
+   "slip_buy": 0,
+   "slip_sell": 0.00042486219899728894,
+   "spread_maks": 0.001030662200463798
+  },
+  "SOLIDR": {
+   "n_snapshot": 3,
+   "pertama": "1794651276.json",
+   "terakhir": "1794651877.json",
+   "half_spread": 0.00013086075010247154,
+   "spread": 0.0002617215002049431,
+   "slip_buy": 0,
+   "slip_sell": 0.0001249005290789862,
+   "spread_maks": 0.0009878663923313898
+  },
+  "XRPIDR": {
+   "n_snapshot": 3,
+   "pertama": "1794651275.json",
+   "terakhir": "1794651875.json",
+   "half_spread": 0.000027577838449022366,
+   "spread": 0.00005515567689804473,
+   "slip_buy": 0,
+   "slip_sell": 0.0004284871086039921,
+   "spread_maks": 0.0011033265294864015
+  }
+ }
+}
