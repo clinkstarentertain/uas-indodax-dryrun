@@ -1,27 +1,27 @@
-<!-- dibuat otomatis oleh tools/hitung_ulang.mjs dari docs/REFLEKSI.template.md pada 2026-11-14T12:31:29.215Z -->
+<!-- dibuat otomatis oleh tools/hitung_ulang.mjs dari docs/REFLEKSI.template.md pada 2026-11-14T13:07:55.826Z -->
 # Refleksi: backtest vs forward test
 
 Semua angka di dokumen ini berasal dari [laporan/ringkasan_angka.md](../laporan/ringkasan_angka.md) dan [laporan/angka.json](../laporan/angka.json), keduanya dibuat oleh `node tools/hitung_ulang.mjs` dari log mentah. Bila dokumen ini dan file-file itu berbeda, **file hasil hitung_ulang yang benar**. Dashboard Vercel terus diperbarui selama bot berjalan.
 
 ## 1. Status forward test saat pengumpulan (jujur)
 
-Soal meminta freeze pada 4 Nov 12.00 WIB dan forward test 10 hari. Pekerjaan ini baru dimulai **14 Nov**: freeze pada 18:06 WIB (commit `7f112cd`), dan tick produksi pertama berjalan pukul 18.09 WIB. Karena itu, saat pengumpulan forward test baru mencakup **2 candle 1 jam**, bukan 240 candle. Tidak ada angka forward yang dibuat untuk periode yang tidak dijalankan. Bot tetap berjalan sampai sekitar 24 Nov dengan aturan yang sama, dan dashboard Vercel memperbarui angkanya secara langsung.
+Soal meminta freeze pada 4 Nov 12.00 WIB dan forward test 10 hari. Pekerjaan ini baru dimulai **14 Nov**: freeze pada 18:06 WIB (commit `7f112cd`), dan tick produksi pertama berjalan pukul 18.09 WIB. Karena itu, saat pengumpulan forward test baru mencakup **3 candle 1 jam**, bukan 240 candle. Tidak ada angka forward yang dibuat untuk periode yang tidak dijalankan. Bot tetap berjalan sampai sekitar 24 Nov dengan aturan yang sama, dan dashboard Vercel memperbarui angkanya secara langsung.
 
 Ringkasan saat pengumpulan:
 
 - Forward: return 0,00%, MDD 0,00%, 0 order.
-- Buy & hold BTC/IDR pada jendela yang sama: -0,34%.
-- Uptime 100,0% (2/2), dengan keterlambatan panggilan median 10 menit sesudah candle tutup.
+- Buy & hold BTC/IDR pada jendela yang sama: -0,97%.
+- Uptime 100,0% (3/3), dengan keterlambatan panggilan median 7 menit sesudah candle tutup.
 - Error API 0.
 - Kill switch diuji 4 kali (nyala/mati) di produksi tanpa redeploy.
 
 ## 2. Kecocokan sinyal: target 100%
 
-Backtest dijalankan ulang di jendela forward yang sama, memakai candle yang diunduh ulang dari Indodax sesudah jendela itu. Sinyal **entry, exit, dan saklar BTC** dicocokkan per pasangan per candle. Hasilnya **12/12** cocok.
+Backtest dijalankan ulang di jendela forward yang sama, memakai candle yang diunduh ulang dari Indodax sesudah jendela itu. Sinyal **entry, exit, dan saklar BTC** dicocokkan per pasangan per candle. Hasilnya **18/18** cocok.
 
 Kecocokan ini memang diharapkan karena kedua sisi memanggil `decide()` dan `planOrders()` yang sama. Jendela indikatornya juga sama, yaitu 1.600 candle tertutup. Bila saya membuat duplikasi logika untuk bot, kecocokan ini tidak akan terjamin.
 
-Data candle juga konsisten: dari 11.664 bar yang tumpang tindih antara unduhan ulang dan data backtest, ada **0** close yang berbeda. Indodax tidak merevisi candle tertutup.
+Data candle juga konsisten: dari 11.658 bar yang tumpang tindih antara unduhan ulang dan data backtest, ada **0** close yang berbeda. Indodax tidak merevisi candle tertutup.
 
 ## 3. Kenapa forward test hampir pasti 0 trade, dan apakah itu wajar
 
@@ -32,7 +32,7 @@ Sepanjang jendela forward, saklar pasar **OFF**. Pada candle 17.00 WIB 14 Nov, c
 
 Backtest pada jendela yang sama juga tidak menghasilkan order. Jadi gap return forward vs backtest adalah **0,00%**, dan nol ini bukan kebetulan: memang tidak ada yang dieksekusi di kedua sisi.
 
-Selisih yang tersisa adalah benchmark. Buy & hold BTC/IDR langsung tercatat negatif (-0,34%) sejak tick pertama. Penyebabnya adalah biaya masuk: beli di best ask ditambah fee 0,3248%, lalu dinilai di best bid. Ini contoh langsung mengapa ekuitas dinilai di bid, bukan di last atau mid.
+Selisih yang tersisa adalah benchmark. Buy & hold BTC/IDR langsung tercatat negatif (-0,97%) sejak tick pertama. Penyebabnya adalah biaya masuk: beli di best ask ditambah fee 0,3248%, lalu dinilai di best bid. Ini contoh langsung mengapa ekuitas dinilai di bid, bukan di last atau mid.
 
 ## 4. Sumber selisih bila ada trade (kuantitatif, dari backtest dan log)
 
@@ -42,11 +42,11 @@ Bila forward menghasilkan trade selama 10 hari ke depan, selisih harga isi per t
 
 1. **Keterlambatan jadwal.**
    - Backtest mengisi di open candle T+1 (sekitar 0 menit sesudah sinyal).
-   - Bot mengisi rata-rata 10 menit sesudah candle tutup (scheduler menit ke-7, ditambah sekitar 12 detik eksekusi).
+   - Bot mengisi rata-rata 7 menit sesudah candle tutup (scheduler menit ke-7, ditambah sekitar 12 detik eksekusi).
    - Perubahan harga selama selang itu masuk ke `selisih_vs_sinyal`.
 2. **Spread.**
    - Backtest memakai median dari 3 snapshot yang ada saat freeze.
-   - Seluruh snapshot sampai pengumpulan (lokal ditambah order book di setiap log bot) memberikan median yang **lebih lebar** untuk XRP, SOL, dan ADA. Contohnya ADAIDR: 0,167% di backtest vs 0,350% dari semua snapshot (tabel lengkap di ringkasan angka).
+   - Seluruh snapshot sampai pengumpulan (lokal ditambah order book di setiap log bot) memberikan median yang **lebih lebar** untuk XRP, SOL, dan ADA. Contohnya ADAIDR: 0,167% di backtest vs 0,267% dari semua snapshot (tabel lengkap di ringkasan angka).
    - Artinya backtest sedikit **meremehkan** biaya untuk altcoin. Uji stres spread dan slippage ×2 memangkas return 3 tahun dari +328,6% menjadi +302,6%. Dampaknya nyata, tetapi tidak mengubah tanda hasil.
 3. **Slippage.** Untuk order Rp30 juta, slippage median kecil (≤ 0,05%) karena level-level teratas cukup dalam. BTC dan DOGE praktis tidak mengalami slippage.
 
