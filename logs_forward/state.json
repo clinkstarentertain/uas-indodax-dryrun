@@ -1,0 +1,93 @@
+{
+ "versi": "v2-donchian-168-72",
+ "params": {
+  "timeframe": "60",
+  "donchianIn": 168,
+  "donchianOut": 72,
+  "emaSlow": 200,
+  "btcRegimeEma": 720,
+  "maxPositions": 3,
+  "maxPositionFrac": 0.3,
+  "dailyLossLimit": 0.03,
+  "minOrderIdr": 25000,
+  "warmupBars": 800
+ },
+ "fee_taker": 0.003248,
+ "modal_awal": 100000000,
+ "mulai": 1794654572,
+ "cash": 100000000,
+ "positions": {},
+ "lastCandle": 1794650400,
+ "day": "2026-11-14",
+ "dayStartEquity": 100000000,
+ "killSwitch": {
+  "on": false,
+  "mode": "blok",
+  "sejak": 1794655052,
+  "alasan": "uji kedua selesai"
+ },
+ "killLog": [
+  {
+   "t": 1794654978,
+   "iso": "2026-11-14T11:16:18.000Z",
+   "on": true,
+   "mode": "blok",
+   "alasan": "uji kill switch tanpa redeploy (UAS)"
+  },
+  {
+   "t": 1794655049,
+   "iso": "2026-11-14T11:17:29.000Z",
+   "on": false,
+   "mode": "blok",
+   "alasan": "selesai uji, bot normal"
+  },
+  {
+   "t": 1794655051,
+   "iso": "2026-11-14T11:17:31.000Z",
+   "on": true,
+   "mode": "blok",
+   "alasan": "uji kedua: langsung sesudah tulis"
+  },
+  {
+   "t": 1794655052,
+   "iso": "2026-11-14T11:17:32.000Z",
+   "on": false,
+   "mode": "blok",
+   "alasan": "uji kedua selesai"
+  }
+ ],
+ "history": [
+  {
+   "t": 1794654572,
+   "candle": 1794650400,
+   "ekuitas": 100000000,
+   "kas": 100000000,
+   "n_posisi": 0,
+   "btc_bid": 1235114000,
+   "bh_btc": 99676170.83301364,
+   "n_order": 0,
+   "n_error_api": 0
+  }
+ ],
+ "daily": [
+  {
+   "hari": "2026-11-14",
+   "ekuitas": 100000000,
+   "t": 1794654572
+  }
+ ],
+ "trades": [],
+ "orders": [],
+ "ops": {
+  "panggilan_diproses": 1,
+  "gagal_fatal": 0,
+  "error_api": 0,
+  "konflik": 0,
+  "kill_aktif_putaran": 0
+ },
+ "bh": {
+  "t": 1794654572,
+  "ask": 1235115000,
+  "qty": 0.08070200065177274
+ }
+}

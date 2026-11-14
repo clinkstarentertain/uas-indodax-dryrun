@@ -1,8 +1,8 @@
 # rahasia - tidak pernah dikomit
 .env
 .env.*
-!.env.example
+.env*
 .vercel
 node_modules/
 tmp/
-*.log.tmp
+!.env.example

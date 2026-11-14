@@ -15,7 +15,8 @@ export async function POST(request) {
   if (typeof body.on !== 'boolean') return json({ error: 'field "on" (boolean) wajib' }, 400);
   const mode = body.mode === 'tutup' ? 'tutup' : 'blok';
   const store = await getStore(); const now = Math.floor(Date.now() / 1000);
-  for (let a = 0; a < 3; a++) {
+  for (let a = 0; a < 6; a++) {
+    if (a) await new Promise((r) => setTimeout(r, 1500 * a));   // baca-sesudah-tulis Blob bisa tertinggal sesaat
     const got = await store.getJson(STATE_PATH);
     const st = got ? got.data : newState(now);
     st.killSwitch = { on: body.on, mode, sejak: now, alasan: String(body.alasan || '').slice(0, 200) };

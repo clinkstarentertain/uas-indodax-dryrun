@@ -1,0 +1,11 @@
+/data
+/artifacts
+/backtest
+/tools
+/docs
+/logs_forward
+/laporan
+.env
+.env.*
+*.md
+/scheduler

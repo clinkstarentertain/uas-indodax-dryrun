@@ -9,7 +9,7 @@ async function handle(request) {
   const errors = [];
   try {
     const out = await runTick({ client: makeClient(errors), store: await getStore(), errors });
-    return json(out, out.status === 'gagal' ? 502 : 200);
+    return json(out, out.status === 'gagal' ? 502 : out.status === 'konflik' ? 409 : 200);   // 409 -> scheduler mencoba lagi
   } catch (e) {
     return json({ status: 'error', error: String(e && e.message || e), error_api: errors.length }, 500);
   }

@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bot Dry Run Indodax</title>
+<meta name="description" content="Dashboard UAS: bot dry run momentum breakout 1 jam di Indodax - backtest, forward test, gap, dan operasional.">
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#14171f;--mute:#5d6576;--line:#e3e6ec;--acc:#1f5eff;--pos:#0a8a4a;--neg:#c62828;--warn:#b26a00;--chip:#eef2ff;--bt:#1f5eff;--fw:#e8590c;--bh:#8a94a6;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1116;--card:#161a22;--ink:#e8ebf1;--mute:#97a0b2;--line:#262c38;--acc:#6e98ff;--pos:#3ccf85;--neg:#ff6b6b;--warn:#f0a83a;--chip:#1d2540;--bt:#6e98ff;--fw:#ff8a3d;--bh:#6b7487;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e1116;--card:#161a22;--ink:#e8ebf1;--mute:#97a0b2;--line:#262c38;--acc:#6e98ff;--pos:#3ccf85;--neg:#ff6b6b;--warn:#f0a83a;--chip:#1d2540;--bt:#6e98ff;--fw:#ff8a3d;--bh:#6b7487;color-scheme:dark}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:20px 16px 60px}
+header{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;justify-content:space-between;margin-bottom:18px}
+h1{font-size:22px;margin:0 0 4px;letter-spacing:-.01em}h2{font-size:16px;margin:0 0 12px}h3{font-size:13px;margin:14px 0 8px;color:var(--mute);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.sub{color:var(--mute);font-size:13px}.badge{display:inline-flex;gap:6px;align-items:center;padding:3px 10px;border-radius:99px;background:var(--chip);font-size:12px;font-weight:600}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--mute)}.ok .dot{background:var(--pos)}.bad .dot{background:var(--neg)}.warn .dot{background:var(--warn)}
+section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:16px}
+.grid{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.kpi{border:1px solid var(--line);border-radius:10px;padding:10px 12px}.kpi .l{color:var(--mute);font-size:12px}.kpi .v{font-size:20px;font-weight:700;font-variant-numeric:tabular-nums}.kpi .s{color:var(--mute);font-size:11px}
+.pos{color:var(--pos)}.neg{color:var(--neg)}.two{display:grid;gap:16px;grid-template-columns:1fr 1fr}@media(max-width:820px){.two{grid-template-columns:1fr}}
+.tbl{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:12.5px;font-variant-numeric:tabular-nums}th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}th{color:var(--mute);font-weight:600}th:first-child,td:first-child{text-align:left}
+.chart{width:100%;height:240px}.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--mute);margin-top:4px}.legend i{display:inline-block;width:12px;height:3px;border-radius:2px;margin-right:5px;vertical-align:middle}
+.note{background:var(--chip);border-radius:10px;padding:10px 12px;font-size:13px}.y{font-weight:700}.mono{font-family:ui-monospace,Consolas,monospace;font-size:12px}
+nav a{color:var(--acc);text-decoration:none;margin-right:12px;font-size:13px}button{font:inherit;background:var(--chip);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:4px 10px;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div>
+    <h1>Bot Dry Run Indodax: Momentum Breakout 1 Jam</h1>
+    <div class="sub">Long-only · 6 pasangan IDR · API publik saja · fill di order book (beli = ask, jual = bid) · <span id="mode"></span></div>
+  </div>
+  <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span id="status" class="badge"><span class="dot"></span><span>memuat…</span></span><button id="theme" type="button">tema</button></div>
+</header>
+<nav><a href="#forward">Forward</a><a href="#backtest">Backtest</a><a href="#gap">Gap</a><a href="#ops">Operasional</a><a href="#sinyal">Sinyal</a><a href="#biaya">Biaya</a></nav>
+<div id="err" class="note" style="display:none;margin:12px 0"></div>
+
+<section id="forward"><h2>Forward test (dry run live)</h2>
+  <div class="sub" id="fwdWin"></div>
+  <div class="grid" id="fwdKpi" style="margin-top:10px"></div>
+  <h3>Ekuitas forward vs buy &amp; hold BTC/IDR</h3><svg class="chart" id="fwdChart" role="img" aria-label="grafik ekuitas forward"></svg>
+  <div class="legend"><span><i style="background:var(--fw)"></i>Strategi (dinilai di best bid)</span><span><i style="background:var(--bh)"></i>Buy &amp; hold BTC/IDR</span></div>
+  <div class="two"><div><h3>Posisi terbuka</h3><div class="tbl" id="pos"></div></div><div><h3>Order</h3><div class="tbl" id="ord"></div></div></div>
+  <h3>Trade tertutup</h3><div class="tbl" id="trd"></div>
+</section>
+
+<section id="backtest"><h2>Backtest (data candle Indodax asli)</h2>
+  <div class="sub" id="btWin"></div>
+  <div class="grid" id="btKpi" style="margin-top:10px"></div>
+  <h3>Ekuitas harian (00.00 WIB): strategi vs buy &amp; hold BTC/IDR</h3><svg class="chart" id="btChart" role="img" aria-label="grafik ekuitas backtest"></svg>
+  <div class="legend"><span><i style="background:var(--bt)"></i>Strategi</span><span><i style="background:var(--bh)"></i>Buy &amp; hold BTC/IDR</span></div>
+  <h3>Pemilihan parameter: grid in-sample (OOS hanya dilaporkan)</h3><div class="tbl" id="grid"></div>
+  <div class="note" id="stress" style="margin-top:10px"></div>
+</section>
+
+<section id="gap"><h2>Gap backtest vs forward (jendela yang sama)</h2><div id="gapBox"></div></section>
+
+<section id="ops"><h2>Panel operasional</h2><div class="grid" id="opsKpi"></div>
+  <h3>Riwayat kill switch</h3><div class="tbl" id="kill"></div>
+  <h3>Order diblokir / validasi gagal (terbaru)</h3><div class="tbl" id="blok"></div>
+</section>
+
+<section id="sinyal"><h2>Keputusan candle terakhir</h2><div class="sub" id="decHead"></div><div class="tbl" id="dec" style="margin-top:8px"></div></section>
+
+<section id="biaya"><h2>Biaya &amp; aturan</h2><div class="two"><div class="tbl" id="fee"></div><div class="tbl" id="cost"></div></div>
+  <div class="tbl" id="params" style="margin-top:12px"></div>
+  <p class="sub">Semua angka di halaman ini dibaca dari <span class="mono">/api/data</span> (state bot di Vercel Blob, dihitung saat diminta) dan <span class="mono">/data/laporan.json</span> (hasil <span class="mono">tools/hitung_ulang.mjs</span> dari log mentah). Tidak ada angka yang diketik tangan. Freeze: tag git <span class="mono">freeze-uas</span>.</p>
+</section>
+</div>
+<script id="data-offline"></script>
+<script>
+(function(){
+const $=(id)=>document.getElementById(id);
+const pct=(v,d=1)=>v==null||!isFinite(v)?'–':(v*100).toFixed(d).replace('.',',')+'%';
+const num=(v,d=2)=>v==null||!isFinite(v)?'–':Number(v).toLocaleString('id-ID',{maximumFractionDigits:d,minimumFractionDigits:d});
+const rp=(v)=>v==null||!isFinite(v)?'–':'Rp'+Math.round(v).toLocaleString('id-ID');
+const px=(v)=>v==null?'–':Number(v).toLocaleString('id-ID',{maximumFractionDigits:v<100?4:0});
+const cls=(v)=>v==null?'':v>0?'pos':v<0?'neg':'';
+const wib=(t)=>t==null?'–':new Date((t+7*3600)*1000).toISOString().replace('T',' ').slice(0,16)+' WIB';
+const esc=(s)=>String(s==null?'':s).replace(/[&<>"]/g,(c)=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const kpi=(l,v,s,c)=>`<div class="kpi"><div class="l">${l}</div><div class="v ${c||''}">${v}</div>${s?`<div class="s">${s}</div>`:''}</div>`;
+const table=(cols,rows,empty)=>rows.length?`<table><thead><tr>${cols.map(c=>`<th>${c[0]}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${cols.map(c=>`<td>${c[1](r)}</td>`).join('')}</tr>`).join('')}</tbody></table>`:`<div class="sub">${empty||'belum ada'}</div>`;
+// tema
+const root=document.documentElement;try{const t=localStorage.getItem('tema');if(t)root.dataset.theme=t;}catch(e){}
+$('theme').onclick=()=>{const d=root.dataset.theme==='dark'||(!root.dataset.theme&&matchMedia('(prefers-color-scheme: dark)').matches);root.dataset.theme=d?'light':'dark';try{localStorage.setItem('tema',root.dataset.theme);}catch(e){};render();};
+function chart(svg,series,opt){ // series: [{pts:[[x,y]],color}]
+  const W=svg.clientWidth||800,H=svg.clientHeight||240,P={l:58,r:10,t:10,b:24};svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const all=series.flatMap(s=>s.pts).filter(p=>p[1]!=null&&isFinite(p[1]));
+  if(all.length<2){svg.innerHTML=`<text x="${W/2}" y="${H/2}" text-anchor="middle" fill="currentColor" opacity=".6" font-size="13">${opt&&opt.empty||'data belum cukup untuk grafik'}</text>`;return;}
+  let x0=Math.min(...all.map(p=>p[0])),x1=Math.max(...all.map(p=>p[0])),y0=Math.min(...all.map(p=>p[1])),y1=Math.max(...all.map(p=>p[1]));
+  if(x1===x0)x1=x0+1;if(y1===y0){y0*=0.995;y1*=1.005;}const pad=(y1-y0)*0.06;y0-=pad;y1+=pad;
+  const X=x=>P.l+(x-x0)/(x1-x0)*(W-P.l-P.r),Y=y=>H-P.b-(y-y0)/(y1-y0)*(H-P.t-P.b);
+  let g='';
+  for(let i=0;i<=4;i++){const v=y0+(y1-y0)*i/4,y=Y(v);g+=`<line x1="${P.l}" x2="${W-P.r}" y1="${y}" y2="${y}" style="stroke:var(--line)"/><text x="${P.l-6}" y="${y+4}" text-anchor="end" font-size="10" style="fill:var(--mute)">${(v/1e6).toLocaleString('id-ID',{maximumFractionDigits:1})} jt</text>`;}
+  for(let i=0;i<=4;i++){const v=x0+(x1-x0)*i/4;g+=`<text x="${X(v)}" y="${H-6}" text-anchor="${i===0?'start':i===4?'end':'middle'}" font-size="10" style="fill:var(--mute)">${opt.fx(v)}</text>`;}
+  for(const s of series){const d=s.pts.filter(p=>p[1]!=null).map((p,i)=>`${i?'L':'M'}${X(p[0]).toFixed(1)},${Y(p[1]).toFixed(1)}`).join('');g+=`<path d="${d}" fill="none" style="stroke:var(${s.color})" stroke-width="${s.w||1.8}"/>`;}
+  svg.innerHTML=g;
+}
+let API=null,LAP=null;
+function render(){
+  const L=LAP||{},F=API?{...API.metrik,history:API.history,trades:API.trades,orders:API.orders,posisi:API.posisi,kill_log:API.kill_log,kill_switch:API.kill_switch,keputusan_terakhir:API.keputusan_terakhir,ops:API.ops}:(L.forward||null);
+  $('mode').textContent=window.__OFFLINE__?`mode OFFLINE (laporan dibuat ${L.dibuat?L.dibuat.slice(0,16).replace('T',' '):''} UTC)`:'mode ONLINE (data live dari Vercel Blob)';
+  // status
+  const st=$('status');if(F&&F.history&&F.history.length){const last=F.history.at(-1).t,age=(Date.now()/1000-last)/3600;st.className='badge '+(window.__OFFLINE__?'warn':age<1.5?'ok':'bad');st.lastChild.textContent=`tick terakhir ${wib(last)}${window.__OFFLINE__?'':` (${age.toFixed(1)} jam lalu)`}`;}else{st.className='badge warn';st.lastChild.textContent='belum ada tick';}
+  // forward
+  if(F){const h=F.history||[];
+    $('fwdWin').textContent=h.length?`Mulai ${wib(h[0].t)} · ${F.candle_diproses} candle diproses · modal Rp100 juta · return total & MDD saja (tanpa CAGR)`:'';
+    $('fwdKpi').innerHTML=[kpi('Ekuitas',rp(F.ekuitas_akhir)),kpi('Return total',pct(F.return_total,2),'',cls(F.return_total)),kpi('MDD',pct(F.mdd,2),'','neg'),kpi('Jumlah trade',F.jumlah_trade,`${F.jumlah_order} order`),kpi('Profit factor',num(F.profit_factor)),kpi('Win rate',pct(F.win_rate)),
+      kpi('Rata-rata untung / rugi',`${pct(F.rata_untung_pct==null?null:F.rata_untung_pct/100)} / ${pct(F.rata_rugi_pct==null?null:F.rata_rugi_pct/100)}`,`${rp(F.rata_untung_rp)} / ${rp(F.rata_rugi_rp)}`),kpi('Porsi biaya',pct(F.porsi_biaya),'(fee+spread+slip) / laba kotor'),kpi('B&amp;H BTC/IDR',pct(F.bh_btc_return,2),`MDD ${pct(F.bh_btc_mdd,2)}`,cls(F.bh_btc_return))].join('');
+    chart($('fwdChart'),[{pts:h.map(x=>[x.t,x.bh_btc]),color:'--bh',w:1.4},{pts:h.map(x=>[x.t,x.ekuitas]),color:'--fw'}],{fx:v=>wib(v).slice(5,16),empty:'grafik muncul sesudah ≥ 2 tick'});
+    const pos=Object.entries(F.posisi||{}).map(([p,x])=>({p,...x}));
+    $('pos').innerHTML=table([['Pasangan',r=>r.p],['Qty',r=>num(r.qty,8)],['Harga masuk',r=>px(r.avg)],['Biaya',r=>rp(r.cost)],['Masuk',r=>wib(r.time)]],pos,'tidak ada posisi (kas 100%)');
+    $('ord').innerHTML=table([['Waktu',r=>wib(r.t)],['Pasangan',r=>r.pair],['Sisi',r=>r.sisi],['Qty',r=>num(r.qty,8)],['Best bid / ask',r=>`${px(r.best_bid)} / ${px(r.best_ask)}`],['Fill',r=>px(r.harga_fill)],['Fee',r=>rp(r.fee)],['vs sinyal',r=>pct(r.selisih_vs_sinyal,3)]],(F.orders||[]).slice().reverse(),'belum ada order');
+    $('trd').innerHTML=table([['Pasangan',r=>r.pair],['Masuk',r=>wib(r.masuk)],['Keluar',r=>wib(r.keluar)],['Laba bersih',r=>`<span class="${cls(r.laba_bersih)}">${rp(r.laba_bersih)}</span>`],['Return',r=>pct(r.return_pct/100,2)],['Biaya',r=>rp(r.fee_masuk+r.fee_keluar+r.spread_rp+r.slip_rp)],['Alasan',r=>esc(r.alasan)]],(F.trades||[]).slice().reverse(),'belum ada trade tertutup');
+    // ops
+    const O=F.ops||{};const ks=F.kill_switch||{};
+    $('opsKpi').innerHTML=[kpi('Uptime',pct(F.uptime),`${F.candle_diproses}/${F.candle_diharapkan} candle per jam`,F.uptime>=0.95?'pos':'neg'),kpi('Error API',F.error_api!=null?F.error_api:(O.error_api||0),'percobaan request gagal (sudah di-retry)'),kpi('Gagal fatal',F.gagal_fatal!=null?F.gagal_fatal:(O.gagal_fatal||0),'putaran tanpa eksekusi'),
+      kpi('Kill switch',ks.on?`AKTIF (${esc(ks.mode)})`:'mati',`${F.kill_switch_perubahan||0} perubahan · ${F.kill_switch_putaran_aktif||0} putaran aktif`,ks.on?'neg':'pos'),kpi('Konflik/duplikat ditolak',O.konflik||0,'idempoten per candle')].join('');
+    $('kill').innerHTML=table([['Waktu',r=>wib(r.t)],['Status',r=>r.on?'AKTIF':'mati'],['Mode',r=>esc(r.mode)],['Alasan',r=>esc(r.alasan)]],(F.kill_log||[]).slice().reverse(),'kill switch belum pernah dipakai');
+    const dk=F.keputusan_terakhir;const bl=(L.forward&&L.forward.diblokir)||((dk&&dk.diblokir)||[]).map(d=>({candle:dk.candle,...d}));
+    $('blok').innerHTML=table([['Candle',r=>wib(r.candle)],['Pasangan',r=>r.pair],['Alasan',r=>esc(r.reason)]],bl.slice(-15).reverse(),'tidak ada order yang diblokir');
+    if(dk){$('decHead').innerHTML=`Candle ${wib(dk.candle)} · saklar BTC: <b class="${dk.regime_on?'pos':'neg'}">${dk.regime_on?'ON':'OFF'}</b> (close ${px(dk.btc_close)} vs EMA720 ${px(dk.btc_ema720)})`;
+      const v=Object.fromEntries((dk.validasi||[]).map(x=>[x.pair,x]));
+      $('dec').innerHTML=table([['Pasangan',r=>r.pair],['Close',r=>px(r.close)],['Tertinggi 168j',r=>px(r.hh)],['Terendah 72j',r=>px(r.ll)],['EMA200',r=>px(r.ema200)],['Tren',r=>r.tren?'ya':'tidak'],['Entry',r=>r.entry?'<b class="pos">YA</b>':'–'],['Exit',r=>r.exit?'<b class="neg">YA</b>':'–'],['Validasi',r=>{const x=v[r.pair]||{};return esc(x.candle||x.order_book||'lolos');}]],dk.baris||[]);}
+  }
+  // backtest
+  const A=L.backtest;if(A){$('btWin').textContent=`${A.periode[0]} s.d. ${A.periode[1]} (${num(A.tahun,2)} tahun) · modal Rp100 juta · fee taker ${pct(L.fee.taker_dipakai,4)} per sisi + spread & slippage dari snapshot`;
+    $('btKpi').innerHTML=[kpi('Return total',pct(A.return_total),'',cls(A.return_total)),kpi('CAGR',pct(A.cagr),'',cls(A.cagr)),kpi('MDD',pct(A.mdd),'','neg'),kpi('Jumlah trade',A.jumlah_trade),kpi('Profit factor',num(A.profit_factor)),kpi('Win rate',pct(A.win_rate)),
+      kpi('Rata-rata untung / rugi',`${pct(A.rata_untung_pct/100)} / ${pct(A.rata_rugi_pct/100)}`,`${rp(A.rata_untung_rp)} / ${rp(A.rata_rugi_rp)}`),kpi('Porsi biaya',pct(A.porsi_biaya),`${rp(A.total_biaya_rp)} dari laba kotor ${rp(A.laba_kotor_rp)}`),kpi('B&amp;H BTC/IDR',pct(A.bh_btc_return),`CAGR ${pct(A.bh_btc_cagr)} · MDD ${pct(A.bh_btc_mdd)}`,cls(A.bh_btc_return))].join('');
+    const d=A.seri_harian.map(s=>[Date.parse(s.hari)/1000,s.ekuitas,s.bh_btc]);chart($('btChart'),[{pts:d.map(x=>[x[0],x[2]]),color:'--bh',w:1.4},{pts:d.map(x=>[x[0],x[1]]),color:'--bt'}],{fx:v=>new Date(v*1000).toISOString().slice(0,7)});
+    const G=L.is_oos;$('grid').innerHTML=table([['Masuk N jam',r=>r.donchianIn],['Keluar M jam',r=>r.donchianOut],['IS CAGR',r=>pct(r.is_cagr)],['IS MDD',r=>pct(r.is_mdd)],['IS Calmar',r=>num(r.is_calmar)],['IS trade',r=>r.is_trade],['IS PF',r=>num(r.is_pf)],['OOS return',r=>`<span class="${cls(r.oos_return)}">${pct(r.oos_return)}</span>`],['OOS MDD',r=>pct(r.oos_mdd)],['',r=>r.donchianIn===G.terpilih.donchianIn&&r.donchianOut===G.terpilih.donchianOut?'<b>terpilih</b>':'']],G.semua);
+    $('stress').innerHTML=`IS ${G.IS.join(' → ')} · OOS ${G.OOS.join(' → ')} · kriteria: ${esc(G.kriteria)}. Uji stres spread &amp; slippage ×2 (3 tahun): return ${pct(L.stress_biaya_x2.return_total)}, MDD ${pct(L.stress_biaya_x2.mdd)}. <b>OOS tahun terakhir negatif</b> sehingga hasil 3 tahun belum membuktikan edge.`;
+  }
+  // gap
+  const C=L.gap;$('gapBox').innerHTML=C?`<div class="grid">${kpi('Jendela',`${C.jendela.jam} jam`,`${wib(C.jendela.candle_awal)} → ${wib(C.jendela.candle_akhir)}`)}${kpi('Sinyal cocok',`${C.sinyal.cocok}/${C.sinyal.tersedia_di_backtest}`,'entry, exit & saklar per pasangan per candle',C.sinyal.cocok===C.sinyal.tersedia_di_backtest?'pos':'neg')}${kpi('Return forward',pct(C.forward_jendela.return_total,2),`${C.forward_jendela.jumlah_order} order`)}${kpi('Return backtest',pct(C.backtest_jendela.return_total,2),`${C.backtest_jendela.jumlah_order} order`)}${kpi('Gap return',pct(C.gap_return,2),'forward − backtest',cls(C.gap_return))}${kpi('MDD forward / backtest',`${pct(C.forward_jendela.mdd,2)} / ${pct(C.backtest_jendela.mdd,2)}`)}${kpi('Candle konsisten',`${C.candle_konsisten.close_beda} beda`,`dari ${C.candle_konsisten.tumpang_tindih} bar tumpang tindih`)}</div>${C.sinyal.tidak_cocok.length?`<h3>Sinyal tidak cocok</h3><div class="tbl">${table([['Candle',r=>wib(r.candle)],['Pasangan',r=>r.pair],['Entry fwd/bt',r=>r.entry_fwd+'/'+r.entry_bt],['Exit fwd/bt',r=>r.exit_fwd+'/'+r.exit_bt]],C.sinyal.tidak_cocok)}</div>`:''}<p class="sub">Dihitung oleh hitung_ulang dari log mentah dan candle Indodax yang diunduh ulang (${L.dibuat?L.dibuat.slice(0,16).replace('T',' '):''} UTC). Pemeriksaan silang: ${L.pemeriksaan.cocok}/${L.pemeriksaan.total} angka cocok.</p>`:'<div class="sub">belum dihitung</div>';
+  // biaya
+  if(L.fee){const s=L.fee.sumber;$('fee').innerHTML=table([['Sumber fee',r=>esc(r.k)],['Taker',r=>pct(r.nilai,4)],['Diakses',r=>esc(r.diakses)]],Object.entries(s).map(([k,v])=>({k:k+' · '+v.url.split(' ')[0],...v})))+`<div class="sub">Dipakai: yang lebih mahal = <b>${pct(L.fee.taker_dipakai,4)}</b> per sisi · minimum order ${rp(L.fee.min_order_idr)}</div>`;
+    $('cost').innerHTML=table([['Pasangan',r=>r.p],['Snapshot',r=>r.n_snapshot],['Spread',r=>pct(r.spread,4)],['Slip beli',r=>pct(r.slip_buy,4)],['Slip jual',r=>pct(r.slip_sell,4)]],Object.entries(L.biaya_snapshot).map(([p,v])=>({p,...v})));
+    const P=L.params;$('params').innerHTML=table([['Parameter',r=>r[0]],['Nilai',r=>esc(r[1])]],[['Masuk','close > EMA'+P.emaSlow+' jam & close > tertinggi '+P.donchianIn+' jam & BTC > EMA'+P.btcRegimeEma],['Keluar','close < terendah '+P.donchianOut+' jam atau saklar BTC OFF'],['Posisi maks / ukuran',P.maxPositions+' posisi / '+pct(P.maxPositionFrac,0)+' ekuitas'],['Daily loss limit',pct(P.dailyLossLimit,0)+' dari ekuitas 00.00 WIB'],['Validasi','candle tertutup, ≤ 2× timeframe, tanpa candle hilang, harga/volume > 0, book tidak kosong, spread ≤ 2%']]);}
+}
+async function load(){
+  if(window.__LAPORAN__){LAP=window.__LAPORAN__;}
+  if(!window.__OFFLINE__){
+    try{const r=await fetch('/data/laporan.json',{cache:'no-store'});if(r.ok)LAP=await r.json();}catch(e){}
+    try{const r=await fetch('/api/data',{cache:'no-store'});const j=await r.json();if(j.metrik)API=j;}catch(e){$('err').style.display='block';$('err').textContent='Gagal memuat /api/data: '+e.message;}
+  }
+  render();
+}
+load();addEventListener('resize',()=>{clearTimeout(window.__rt);window.__rt=setTimeout(render,150);});
+if(!window.__OFFLINE__)setInterval(load,5*60*1000);
+})();
+</script>
+</body>
+</html>
