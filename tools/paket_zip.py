@@ -24,7 +24,7 @@ for f in (".env", ".env.local"):
 secrets.append(("vcp" + "_").encode())   # awalan token Vercel (ditulis terpisah agar file ini tidak memicu dirinya sendiri)
 
 n = 0
-with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as z:
+with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as z:
     for d, dirs, files in os.walk(ROOT):
         dirs[:] = [x for x in dirs if x not in SKIP_DIRS]
         for f in files:
@@ -47,4 +47,6 @@ with zipfile.ZipFile(out) as z:
 print(f"{n} file, {os.path.getsize(out)/1e6:.1f} MB -> {out}")
 print("file .env terlarang:", bad_names or "tidak ada")
 print("file berisi secret:", bad_content or "tidak ada")
-sys.exit(1 if bad_names or bad_content else 0)
+mb = os.path.getsize(out) / 1e6
+print("batas RISE 20 MB:", "OK" if mb < 20 else "MELEBIHI")
+sys.exit(1 if bad_names or bad_content or mb >= 20 else 0)

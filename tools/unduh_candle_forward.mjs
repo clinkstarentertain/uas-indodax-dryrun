@@ -9,5 +9,9 @@ const errors = [], c = makeClient(errors);
 const st = await c.serverTime();
 const n = Number(process.argv[2] || 2400);
 const dir = path.join(ROOT, 'data/raw/candles_forward'); fs.mkdirSync(dir, { recursive: true });
-for (const p of UNIVERSE) { const bars = await c.closedBars(p, st, n); fs.writeFileSync(path.join(dir, `${p}_${st}.json`), JSON.stringify(bars)); console.log(p, bars.length); }
+for (const p of UNIVERSE) {
+  const bars = await c.closedBars(p, st, n); fs.writeFileSync(path.join(dir, `${p}_${st}.json`), JSON.stringify(bars)); console.log(p, bars.length);
+  // simpan hanya unduhan terbaru per pasangan di folder kerja (yang lama tetap ada di riwayat git) agar paket tetap kecil
+  for (const f of fs.readdirSync(dir)) if (f.startsWith(p + '_') && f !== `${p}_${st}.json`) fs.unlinkSync(path.join(dir, f));
+}
 console.log('error api', errors.length);

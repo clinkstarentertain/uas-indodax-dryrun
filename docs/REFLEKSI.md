@@ -1,4 +1,4 @@
-<!-- dibuat otomatis oleh tools/hitung_ulang.mjs dari docs/REFLEKSI.template.md pada 2026-11-14T20:21:43.487Z -->
+<!-- dibuat otomatis oleh tools/hitung_ulang.mjs dari docs/REFLEKSI.template.md pada 2026-11-14T20:33:22.389Z -->
 # Refleksi: backtest vs forward test
 
 Semua angka di dokumen ini berasal dari [laporan/ringkasan_angka.md](../laporan/ringkasan_angka.md) dan [laporan/angka.json](../laporan/angka.json), keduanya dibuat oleh `node tools/hitung_ulang.mjs` dari log mentah. Bila dokumen ini dan file-file itu berbeda, **file hasil hitung_ulang yang benar**. Dashboard Vercel terus diperbarui selama bot berjalan.
@@ -46,7 +46,7 @@ Bila forward menghasilkan trade selama 10 hari ke depan, selisih harga isi per t
    - Perubahan harga selama selang itu masuk ke `selisih_vs_sinyal`.
 2. **Spread.**
    - Backtest memakai median dari 3 snapshot yang ada saat freeze.
-   - Seluruh snapshot sampai pengumpulan (lokal ditambah order book di setiap log bot) memberikan median yang **lebih lebar** untuk XRP, SOL, dan ADA. Contohnya ADAIDR: 0,167% di backtest vs 0,234% dari semua snapshot (tabel lengkap di ringkasan angka).
+   - Seluruh snapshot sampai pengumpulan (lokal ditambah order book di setiap log bot) memberikan median yang **lebih lebar** untuk XRP, SOL, dan ADA. Contohnya ADAIDR: 0,167% di backtest vs 0,237% dari semua snapshot (tabel lengkap di ringkasan angka).
    - Artinya backtest sedikit **meremehkan** biaya untuk altcoin. Uji stres spread dan slippage ×2 memangkas return 3 tahun dari +328,6% menjadi +302,6%. Dampaknya nyata, tetapi tidak mengubah tanda hasil.
 3. **Slippage.** Untuk order Rp30 juta, slippage median kecil (≤ 0,05%) karena level-level teratas cukup dalam. BTC dan DOGE praktis tidak mengalami slippage.
 
