@@ -1,22 +1,22 @@
 # Ringkasan angka (dibuat otomatis oleh tools/hitung_ulang.mjs)
 
-Dibuat: 2026-11-14T13:07:55.826Z (UTC). Pemeriksaan silang: **25/25 cocok**.
+Dibuat: 2026-11-14T14:07:47.347Z (UTC). Pemeriksaan silang: **25/25 cocok**.
 
 ## Forward test
 
 | Metrik | Nilai |
 |---|---|
-| Jendela | 2026-11-14 17:00:00 WIB → 2026-11-14 19:00:00 WIB (3 candle) |
+| Jendela | 2026-11-14 17:00:00 WIB → 2026-11-14 20:00:00 WIB (4 candle) |
 | Ekuitas akhir | Rp100.000.000 |
 | Return total | 0,00% |
 | MDD | 0,00% |
 | Trade / order | 0 / 0 |
 | PF / win rate | – / – |
 | Porsi biaya | – |
-| B&H BTC/IDR (return / MDD) | -0,97% / -0,97% |
-| Uptime | 100,0% (3/3) |
+| B&H BTC/IDR (return / MDD) | -1,31% / -1,31% |
+| Uptime | 100,0% (4/4) |
 | Telat panggilan median / maks | 7 mnt / 10 mnt |
-| Panggilan: eksekusi / duplikat / konflik / gagal | 3 / 1 / 1 / 0 |
+| Panggilan: eksekusi / duplikat / konflik / gagal | 4 / 1 / 1 / 0 |
 | Error API (percobaan gagal) | 0 |
 | Kill switch: perubahan / putaran aktif | 4 / 0 |
 | Fill terverifikasi ulang dari order book di log | 0/0 |
@@ -29,7 +29,7 @@ Dibuat: 2026-11-14T13:07:55.826Z (UTC). Pemeriksaan silang: **25/25 cocok**.
 | MDD | 0,00% | 0,00% |
 | Order | 0 | 0 |
 
-Sinyal cocok candle per candle: **18/18** (entry, exit, saklar × pasangan × candle). Candle unduhan ulang vs data backtest: 0 beda dari 11658 bar.
+Sinyal cocok candle per candle: **24/24** (entry, exit, saklar × pasangan × candle). Candle unduhan ulang vs data backtest: 0 beda dari 11652 bar.
 
 ## Backtest 3 tahun
 
@@ -39,9 +39,9 @@ Return 328,6%, CAGR 62,4%, MDD -30,4%, 258 trade, PF 1.64, win rate 33,3%, porsi
 
 | Pasangan | Spread backtest (n) | Spread median semua (n) | Spread maks | Slip jual bt / semua |
 |---|---|---|---|---|
-| BTCIDR | 0,0001% (3) | 0,0001% (32) | 0,089% | 0,0000% / 0,0000% |
-| ETHIDR | 0,0372% (3) | 0,0715% (32) | 0,209% | 0,0425% / 0,0071% |
-| XRPIDR | 0,0055% (3) | 0,0384% (32) | 0,165% | 0,0428% / 0,0183% |
-| DOGEIDR | 0,1738% (3) | 0,1730% (32) | 0,260% | 0,0000% / 0,0000% |
-| SOLIDR | 0,0262% (3) | 0,0355% (32) | 0,175% | 0,0125% / 0,0137% |
-| ADAIDR | 0,1669% (3) | 0,2668% (32) | 0,533% | 0,0451% / 0,0391% |
+| BTCIDR | 0,0001% (3) | 0,0079% (45) | 0,141% | 0,0000% / 0,0000% |
+| ETHIDR | 0,0372% (3) | 0,0915% (45) | 0,209% | 0,0425% / 0,0000% |
+| XRPIDR | 0,0055% (3) | 0,0710% (45) | 0,165% | 0,0428% / 0,0154% |
+| DOGEIDR | 0,1738% (3) | 0,1732% (45) | 0,263% | 0,0000% / 0,0000% |
+| SOLIDR | 0,0262% (3) | 0,0721% (45) | 0,280% | 0,0125% / 0,0148% |
+| ADAIDR | 0,1669% (3) | 0,2368% (45) | 0,544% | 0,0451% / 0,0333% |
