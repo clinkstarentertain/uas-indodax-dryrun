@@ -1,4 +1,4 @@
-<!-- dibuat otomatis oleh tools/hitung_ulang.mjs dari docs/REFLEKSI.template.md pada 2026-11-14T12:13:46.271Z -->
+<!-- dibuat otomatis oleh tools/hitung_ulang.mjs dari docs/REFLEKSI.template.md pada 2026-11-14T12:31:29.215Z -->
 # Refleksi: backtest vs forward test
 
 Semua angka di dokumen ini berasal dari [laporan/ringkasan_angka.md](../laporan/ringkasan_angka.md) dan [laporan/angka.json](../laporan/angka.json), keduanya dibuat oleh `node tools/hitung_ulang.mjs` dari log mentah. Bila dokumen ini dan file-file itu berbeda, **file hasil hitung_ulang yang benar**. Dashboard Vercel terus diperbarui selama bot berjalan.
